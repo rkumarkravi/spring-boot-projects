@@ -12,9 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,13 +53,14 @@ public class SecurityController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
 
+        UserInfo user=userService.authenticateUserByNameAndPassword(jwtRequest.getUsername(),jwtRequest.getPassword());
         final UserDetails userDetails
-                = userService.authenticateUserByNameAndPassword(jwtRequest.getUsername(),jwtRequest.getPassword());
+                = new User(user.getEmail(),user.getPassword(),new ArrayList<>());
 
         final String token =
                 jwtUtility.generateToken(userDetails);
 
-        return  new JwtResponse(token);
+        return  new JwtResponse(token,user);
     }
     @PostMapping("/authenticate/register")
     public ResponseEntity register(@RequestBody UserInfo user) throws Exception{
@@ -85,6 +88,14 @@ public class SecurityController {
         UserInfo userInfo = userService.resetUserPassword(mapValue);
         jsonpObject.put("msg","Password reset successful!");
         jsonpObject.put("userEmail",userInfo.getEmail());
+        return ResponseEntity.ok(jsonpObject);
+    }
+
+    @PostMapping("/authenticate/logout/{uid}")
+    public ResponseEntity resetPassword(@RequestParam("uid") String uid) throws Exception{
+        Map<String,String> jsonpObject=new HashMap<>();
+        userService.logoutUser(uid);
+        jsonpObject.put("msg","Logged out successfully!");
         return ResponseEntity.ok(jsonpObject);
     }
 }

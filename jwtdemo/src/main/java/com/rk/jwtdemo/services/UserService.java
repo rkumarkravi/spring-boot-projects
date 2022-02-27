@@ -28,12 +28,11 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public UserDetails authenticateUserByNameAndPassword(String username,String password) throws UsernameNotFoundException {
+    public UserInfo authenticateUserByNameAndPassword(String username,String password) throws UsernameNotFoundException {
         List<UserInfo> userInfo = userRepo.findByEmailAndPassword(username, password);
         UserInfo user = userInfo.get(0);
         user.setActive(Status.AVAILABLE);
-        userRepo.save(user);
-        return new User(user.getEmail(),user.getPassword(),new ArrayList<>());
+        return userRepo.save(user);
     }
 
     public UserInfo createUser(UserInfo userInfo){
@@ -74,5 +73,14 @@ public class UserService implements UserDetailsService {
         jsonpObject.put("OTPStatus",otpCorrect);
         jsonpObject.put("userid",user.getUserid());
         return jsonpObject;
+    }
+
+    public void logoutUser(String uid) {
+        Optional<UserInfo> userInfo = userRepo.findById(Long.valueOf(uid));
+        UserInfo user = userInfo.get();
+        if(user!=null){
+            user.setActive(Status.OFFLINE);
+        }
+        userRepo.save(user);
     }
 }

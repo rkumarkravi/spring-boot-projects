@@ -1,5 +1,6 @@
 package com.rk.jwtdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rk.jwtdemo.enums.Gender;
 import com.rk.jwtdemo.enums.Status;
 import lombok.AllArgsConstructor;
@@ -21,11 +22,13 @@ public class UserInfo {
    String firstName;
    String lastName;
    String email;
+   @JsonIgnore
    String password;
    Date dob;
    @Enumerated(EnumType.STRING)
    Gender gender;
    @Enumerated(EnumType.STRING)
    Status active;
+   @JsonIgnore
    String OTP;
 }
