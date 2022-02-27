@@ -66,12 +66,25 @@ public class SecurityController {
         jsonpObject.put("status","SUCCESS");
         return ResponseEntity.ok(jsonpObject);
     }
-    @PostMapping("/authenticate/resetPwd")
-    public ResponseEntity resetPassword(@RequestBody String email) throws Exception{
+    @PostMapping("/authenticate/resetPwdUserValidate")
+    public ResponseEntity resetPasswordUserValidation(@RequestBody String email) throws Exception{
         Map<String,String> jsonpObject=new HashMap<>();
         UserInfo userInfo = userService.getUserByEmailAndSetOtp(email);
         jsonpObject.put("msg","OTP sent on your registered mail id !");
         jsonpObject.put("OTP",userInfo.getOTP());
+        return ResponseEntity.ok(jsonpObject);
+    }
+    @PostMapping("/authenticate/otpvalidate")
+    public ResponseEntity otpValidate(@RequestBody Map<String,String> otpData) throws Exception{
+        Map<String,Object> validationMap = userService.validateOtp(otpData);
+        return ResponseEntity.ok(validationMap);
+    }
+    @PostMapping("/authenticate/resetPassword")
+    public ResponseEntity resetPassword(@RequestBody Map<String,Object> mapValue) throws Exception{
+        Map<String,String> jsonpObject=new HashMap<>();
+        UserInfo userInfo = userService.resetUserPassword(mapValue);
+        jsonpObject.put("msg","Password reset successful!");
+        jsonpObject.put("userEmail",userInfo.getEmail());
         return ResponseEntity.ok(jsonpObject);
     }
 }
