@@ -92,7 +92,7 @@ public class SecurityController {
     }
 
     @GetMapping("/authenticate/logout/{uid}")
-    public ResponseEntity resetPassword(@RequestParam("uid") String uid) throws Exception{
+    public ResponseEntity resetPassword(@PathVariable("uid") String uid) throws Exception{
         Map<String,String> jsonpObject=new HashMap<>();
         userService.logoutUser(uid);
         jsonpObject.put("msg","Logged out successfully!");
