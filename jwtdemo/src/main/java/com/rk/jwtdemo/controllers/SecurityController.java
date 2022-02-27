@@ -91,7 +91,7 @@ public class SecurityController {
         return ResponseEntity.ok(jsonpObject);
     }
 
-    @PostMapping("/authenticate/logout/{uid}")
+    @GetMapping("/authenticate/logout/{uid}")
     public ResponseEntity resetPassword(@RequestParam("uid") String uid) throws Exception{
         Map<String,String> jsonpObject=new HashMap<>();
         userService.logoutUser(uid);

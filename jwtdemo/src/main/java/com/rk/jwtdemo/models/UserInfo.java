@@ -24,6 +24,7 @@ public class UserInfo {
    String email;
    @JsonIgnore
    String password;
+   @Temporal(TemporalType.DATE)
    Date dob;
    @Enumerated(EnumType.STRING)
    Gender gender;
