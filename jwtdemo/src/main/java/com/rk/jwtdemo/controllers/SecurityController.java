@@ -74,7 +74,7 @@ public class SecurityController {
         Map<String,String> jsonpObject=new HashMap<>();
         UserInfo userInfo = userService.getUserByEmailAndSetOtp(email);
         jsonpObject.put("msg","OTP sent on your registered mail id !");
-        jsonpObject.put("OTP",userInfo.getOTP());
+        jsonpObject.put("OTP",userInfo.getOtp());
         return ResponseEntity.ok(jsonpObject);
     }
     @PostMapping("/authenticate/otpvalidate")

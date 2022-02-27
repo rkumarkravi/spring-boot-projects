@@ -1,6 +1,8 @@
 package com.rk.jwtdemo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rk.jwtdemo.enums.Gender;
 import com.rk.jwtdemo.enums.Status;
 import lombok.AllArgsConstructor;
@@ -15,6 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(name = "email",columnNames = "email"))
+@JsonIgnoreProperties(value = {"password","otp"},allowSetters = true)
 public class UserInfo {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +25,6 @@ public class UserInfo {
    String firstName;
    String lastName;
    String email;
-   @JsonIgnore
    String password;
    @Temporal(TemporalType.DATE)
    Date dob;
@@ -30,6 +32,5 @@ public class UserInfo {
    Gender gender;
    @Enumerated(EnumType.STRING)
    Status active;
-   @JsonIgnore
-   String OTP;
+   String otp;
 }

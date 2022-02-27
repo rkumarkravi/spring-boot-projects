@@ -43,7 +43,7 @@ public class UserService implements UserDetailsService {
         List<UserInfo> userInfo = userRepo.findByEmail(email);
         UserInfo user=userInfo.get(0);
         if(userInfo.size()>0){
-            user.setOTP(UserUtility.getOTP());
+            user.setOtp(UserUtility.getOTP());
         }
         userRepo.save(user);
         return user;
@@ -66,7 +66,7 @@ public class UserService implements UserDetailsService {
         List<UserInfo> userInfo = userRepo.findByEmail(val.get("email"));
         UserInfo user=userInfo.get(0);
         if(userInfo.size()>0){
-            otpCorrect=user.getOTP().equals(val.get("otp"));
+            otpCorrect=user.getOtp().equals(val.get("otp"));
         }
         Map<String,Object> jsonpObject=new HashMap<>();
         jsonpObject.put("msg",otpCorrect?"Loading re-set password page!":"Invalid OTP!");
