@@ -8,6 +8,7 @@ import com.rk.jwtdemo.services.UserService;
 import com.rk.jwtdemo.utility.JWTUtility;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -97,5 +98,13 @@ public class SecurityController {
         userService.logoutUser(uid);
         jsonpObject.put("msg","Logged out successfully!");
         return ResponseEntity.ok(jsonpObject);
+    }
+    @PostMapping("/authenticate/validate")
+    public ResponseEntity tokenExpired(@RequestParam("t") String token){
+        log.info(token);
+        if(token==""){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        return ResponseEntity.ok(userService.checkUserActive(token));
     }
 }

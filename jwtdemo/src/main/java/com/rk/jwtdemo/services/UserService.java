@@ -3,6 +3,7 @@ package com.rk.jwtdemo.services;
 import com.rk.jwtdemo.enums.Status;
 import com.rk.jwtdemo.models.UserInfo;
 import com.rk.jwtdemo.repos.UserRepository;
+import com.rk.jwtdemo.utility.JWTUtility;
 import com.rk.jwtdemo.utility.UserUtility;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ import java.util.*;
 public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepo;
+    @Autowired
+    private JWTUtility jwtUtility;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         List<UserInfo> userInfo = userRepo.findByEmail(username);
@@ -82,5 +85,16 @@ public class UserService implements UserDetailsService {
             user.setActive(Status.OFFLINE);
         }
         userRepo.save(user);
+    }
+
+    public UserInfo checkUserActive(String token){
+        String email=this.jwtUtility.getUsernameFromToken(token);
+        List<UserInfo> users = userRepo.findByEmail(email);
+        UserInfo user=null;
+        if(users.size()>0) {
+            user = users.get(0);
+        }
+        return user;
+
     }
 }
