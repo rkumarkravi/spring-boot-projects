@@ -29,7 +29,7 @@ public class UploadService {
 
 			MusicBlob blob=musicBlobDao.save(new MusicBlob(file.getBytes()));
 			
-			MusicFile music = new MusicFile(filename, file.getContentType(),blob.getId());
+			MusicFile music = new MusicFile(filename, file.getContentType(),blob.getId(),false);
 			album.getMusicFiles().add(music);
 			
 			albumDao.save(album);
