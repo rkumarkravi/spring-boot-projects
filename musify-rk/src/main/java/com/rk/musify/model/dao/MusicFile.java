@@ -1,8 +1,12 @@
 package com.rk.musify.model.dao;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -23,6 +27,8 @@ public class MusicFile{
 	String contentType;
 	String blobId;
 	Boolean published;
+	@Temporal(TemporalType.TIMESTAMP)
+	Date createdDate=new Date();
 
 	public MusicFile(String name,String contentType,String blobId,Boolean published) {
 		super();

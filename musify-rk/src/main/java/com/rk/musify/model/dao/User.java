@@ -3,7 +3,6 @@ package com.rk.musify.model.dao;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,29 +17,36 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Album {
+@NoArgsConstructor
+@Entity
+public class User {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	String albumId;
-	String albumName;
-	String creatorName;
+	String uid;
+	String uname;
+	String pass;
+	String mobile;
+	String otp;
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	String apiKey;
 	@Temporal(TemporalType.TIMESTAMP)
 	Date createdDate=new Date();
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
-	@JoinColumn(name = "albumId")
-	Set<MusicFile> musicFiles;
-	String url;
+	@OneToMany(orphanRemoval = true)
+	@JoinColumn(name = "uid")
+	Set<Playlist> playlists;
 
-	public Album(String albumName, String creatorName,String url) {
-		super();
-		this.albumName = albumName;
-		this.creatorName = creatorName;
-		this.url=url;
+	@OneToMany(orphanRemoval = true)
+	@JoinColumn(name = "uid")
+	Set<Album> albums;
+
+	public User(String uname, String pass, String mobile) {
+		this.uname = uname;
+		this.pass = pass;
+		this.mobile = mobile;
+		this.otp = null;
 	}
-
 }
