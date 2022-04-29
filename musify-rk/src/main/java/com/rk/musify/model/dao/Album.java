@@ -34,13 +34,13 @@ public class Album {
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
 	@JoinColumn(name = "albumId")
 	Set<MusicFile> musicFiles;
-	String url;
+	String albumArt;
 
 	public Album(String albumName, String creatorName,String url) {
 		super();
 		this.albumName = albumName;
 		this.creatorName = creatorName;
-		this.url=url;
+		this.albumArt=url;
 	}
 
 }
