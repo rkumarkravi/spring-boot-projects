@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,7 +40,7 @@ public class User {
 	UUID apiKey=UUID.randomUUID();
 	@Temporal(TemporalType.TIMESTAMP)
 	Date createdDate=new Date();
-	@OneToMany(orphanRemoval = true)
+	@OneToMany(orphanRemoval = true,cascade = CascadeType.ALL)
 	@JoinColumn(name = "uid")
 	Set<Playlist> playlists;
 

@@ -10,6 +10,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,21 +20,22 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class MusicFile{
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	String id;
-	String name;
+	String musicName;
 	String contentType;
 	String blobId;
 	Boolean published;
 	@Temporal(TemporalType.TIMESTAMP)
 	Date createdDate=new Date();
 
-	public MusicFile(String name,String contentType,String blobId,Boolean published) {
+	public MusicFile(String musicName,String contentType,String blobId,Boolean published) {
 		super();
-		this.name = name;
+		this.musicName = musicName;
 		this.contentType=contentType;
 		this.blobId=blobId;
 		this.published=published;
