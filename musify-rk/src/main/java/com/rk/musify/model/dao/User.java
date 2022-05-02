@@ -1,6 +1,7 @@
 package com.rk.musify.model.dao;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -42,7 +43,7 @@ public class User {
 	Date createdDate=new Date();
 	@OneToMany(orphanRemoval = true,cascade = CascadeType.ALL)
 	@JoinColumn(name = "uid")
-	Set<Playlist> playlists;
+	Set<Playlist> playlists=new HashSet<>();
 
 	@OneToMany(orphanRemoval = true)
 	@JoinColumn(name = "uid")

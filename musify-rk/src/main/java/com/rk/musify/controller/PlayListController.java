@@ -2,6 +2,7 @@ package com.rk.musify.controller;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,6 @@ public class PlayListController {
 	
 	@RequestMapping(path = {"/getAllPlayList/{uid}","/getall/{uid}"}, method = { RequestMethod.GET })
 	public ResponseEntity<Set<Playlist>> getAllPlayList(@PathVariable("uid") Integer data) {
-		return ResponseEntity.ok(userService.getAllPlayList(data));
+		return ResponseEntity.ok(userService.getAllPlayList(data).stream().filter(x->!x.getName().equals("Liked Songs")).collect(Collectors.toSet()));
 	}
 }

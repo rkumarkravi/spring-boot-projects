@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.rk.musify.model.dao.Playlist;
 import com.rk.musify.model.dao.User;
+import com.rk.musify.repository.PlayListDao;
 import com.rk.musify.repository.UserDao;
 
 
@@ -18,9 +19,13 @@ import com.rk.musify.repository.UserDao;
 public class UserService {
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	PlayListDao playListDao;
 
 	public User createUser(User user) {
-
+		Playlist playlist=new Playlist("Liked Songs");
+		playListDao.save(playlist);
+		user.getPlaylists().add(playlist);
 		return userDao.save(user);
 	}
 	
