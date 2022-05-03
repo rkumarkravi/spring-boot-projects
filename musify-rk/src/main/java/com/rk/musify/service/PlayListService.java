@@ -2,6 +2,8 @@ package com.rk.musify.service;
 
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import com.rk.musify.repository.PlayListDao;
 import com.rk.musify.repository.UserDao;
 
 @Service
+@Transactional
 public class PlayListService {
 	@Autowired
 	UserDao userDao;
@@ -25,9 +28,9 @@ public class PlayListService {
 
 	public Playlist create(Map<String, String> playlistData) {
 		Playlist playList = playListDao.save(new Playlist(playlistData.get("playlistName")));
-		MusicFile mFile=musicFileDao.getById(playlistData.get("mid"));
+		MusicFile mFile = musicFileDao.getById(playlistData.get("mid"));
 		playList.getMusics().add(mFile);
-		playList=playListDao.save(playList);
+		playList = playListDao.save(playList);
 		User user = userDao.findById(Integer.parseInt(playlistData.get("userId"))).get();
 		user.getPlaylists().add(playList);
 		userDao.save(user);
@@ -37,7 +40,7 @@ public class PlayListService {
 	public Playlist addToPlayList(String playListId, String musicId) {
 		Playlist playlist = playListDao.getById(playListId);
 		playlist.getMusics().add(musicFileDao.getById(musicId));
-		playListDao.save(playlist);
+		// playListDao.save(playlist);
 		return playlist;
 	}
 
