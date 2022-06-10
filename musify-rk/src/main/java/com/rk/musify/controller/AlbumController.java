@@ -18,7 +18,7 @@ import com.rk.musify.service.AlbumService;
 
 @RestController
 @RequestMapping("/album")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class AlbumController {
 	
 	@Autowired

@@ -18,7 +18,7 @@ import com.rk.musify.service.DownloadService;
 
 @RestController
 @RequestMapping("/download")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class DownloadController {
 	@Autowired
 	DownloadService downloadService;

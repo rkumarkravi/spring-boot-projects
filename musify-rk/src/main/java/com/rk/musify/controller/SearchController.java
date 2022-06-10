@@ -15,7 +15,7 @@ import com.rk.musify.service.SearchService;
 
 @RestController
 @RequestMapping("/search")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class SearchController {
 	@Autowired
 	SearchService searchService;
