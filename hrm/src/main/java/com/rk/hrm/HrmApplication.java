@@ -1,12 +1,9 @@
 package com.rk.hrm;
 
 import com.rk.hrm.enums.GENDER;
-import com.rk.hrm.models.Department;
-import com.rk.hrm.models.Project;
-import com.rk.hrm.models.User;
-import com.rk.hrm.repos.DepartmentRepository;
-import com.rk.hrm.repos.ProjectRepository;
-import com.rk.hrm.repos.UserRepository;
+import com.rk.hrm.enums.PRIORITY;
+import com.rk.hrm.models.*;
+import com.rk.hrm.repos.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -27,6 +24,11 @@ public class HrmApplication implements ApplicationRunner {
 	@Autowired
 	private ProjectRepository projectRepository;
 
+	@Autowired
+	private TodoRepository todoRepository;
+	@Autowired
+	private TodoNoteRepository todoNoteRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(HrmApplication.class, args);
 	}
@@ -34,7 +36,7 @@ public class HrmApplication implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		Department department=new Department("D1","Dev","open");
+		Department department = new Department("D1", "Dev", "open");
 		departmentRepository.save(department);
 
 		Project project=new Project("P1","String description","String status");
@@ -50,12 +52,20 @@ public class HrmApplication implements ApplicationRunner {
 		dev.setReportingTo(userRepository.findByEmailIgnoreCase("mgr@email.com").get());
 		userRepository.save(dev);
 
-		User dev2 = new User("dev2k","String password","Dev2 Kumar","dev2@email.com","8989989852","String address","Soft eng. 2","Active","String designation",new Date(),GENDER.MALE);
+		User dev2 = new User("dev2k", "String password", "Dev2 Kumar", "dev2@email.com", "8989989852", "String address", "Soft eng. 2", "Active", "String designation", new Date(), GENDER.MALE);
 		dev2.setReportingTo(userRepository.findByEmailIgnoreCase("mgr@email.com").get());
 		dev2.setProject(userRepository.findByEmailIgnoreCase("mgr@email.com").get().getProject());
 		userRepository.save(dev2);
 
-		userRepository.findAll().forEach(x->log.info("User: {}",x));
-		log.info("map: {}",userRepository.findByReportingTo_Id(dev.getReportingTo().getId()));
+		userRepository.findAll().forEach(x -> log.info("User: {}", x));
+		log.info("map: {}", userRepository.findByReportingTo_Id(dev.getReportingTo().getId()));
+
+		Todo todo = Todo.builder().build();
+		todo.setUser(userRepository.findByEmailIgnoreCase("mgr@email.com").get());
+		todoRepository.save(todo);
+
+		TodoNote todoNote = TodoNote.builder().priority(PRIORITY.HIGH).desc("my first Note!!").build();
+		todoNote.setTodo(todo);
+		todoNoteRepository.save(todoNote);
 	}
 }
