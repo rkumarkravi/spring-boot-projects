@@ -64,4 +64,15 @@ public class TodoService {
         }
         return todoNoteMapper.todoNoteToTodoNoteDto(todoNoteRepository.findById(todoNoteId).get());
     }
+
+    public TodoDto updateTodoNote(long toTodoId, long todoNoteId) {
+        Optional<Todo> toTodoOptional = todoRepository.findById(toTodoId);
+        Optional<TodoNote> todoNoteOptional = todoNoteRepository.findById(todoNoteId);
+        if (toTodoOptional.isPresent() && todoNoteOptional.isPresent()) {
+            TodoNote toMoveNode = todoNoteOptional.get();
+            toMoveNode.setTodo(toTodoOptional.get());
+            todoNoteRepository.save(toMoveNode);
+        }
+        return todoMapper.todoToTodoDto(todoRepository.findById(toTodoId).get());
+    }
 }

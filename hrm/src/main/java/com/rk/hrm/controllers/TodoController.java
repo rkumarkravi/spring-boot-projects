@@ -33,4 +33,9 @@ public class TodoController {
     public TodoNoteDto updateTodoNote(@PathVariable("todoNoteId") long todoNoteId, @RequestBody TodoNoteDto todoNoteDto) {
         return todoService.updateTodoNote(todoNoteId, todoNoteDto);
     }
+
+    @PutMapping("move/todo-note/{toId}/{todoNoteId}")
+    public TodoDto moveTodoNode(@PathVariable("toId") long toId, @PathVariable("todoNoteId") long todoNoteId) {
+        return todoService.updateTodoNote(toId, todoNoteId);
+    }
 }
