@@ -25,6 +25,7 @@ public class TodoNote {
     private String desc;
     @Temporal(TemporalType.TIMESTAMP)
     private Date added;
+    private Boolean completed;
     @ManyToOne
     @JoinColumn(name = "todo_id")
     private Todo todo;

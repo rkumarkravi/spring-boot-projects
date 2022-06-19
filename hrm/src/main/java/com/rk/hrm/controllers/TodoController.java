@@ -2,8 +2,10 @@ package com.rk.hrm.controllers;
 
 import com.rk.hrm.dtos.TodoDto;
 import com.rk.hrm.dtos.TodoNoteDto;
+import com.rk.hrm.exceptions.ResourceNotFoundException;
 import com.rk.hrm.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +16,7 @@ public class TodoController {
     @Autowired
     TodoService todoService;
 
-    @PostMapping("/add/{uid}")
+    @PostMapping("/create/{uid}")
     public TodoDto addTodo(@PathVariable("uid") long uid) {
         return todoService.addTodo(uid);
     }
@@ -25,7 +27,7 @@ public class TodoController {
     }
 
     @PostMapping("insert/todo-note/{todoId}")
-    public TodoDto insertTodoNote(@PathVariable("todoId") long todoId, @RequestBody TodoNoteDto todoNoteDto) {
+    public TodoDto insertTodoNote(@PathVariable("todoId") long todoId, @RequestBody TodoNoteDto todoNoteDto) throws ResourceNotFoundException {
         return todoService.insertTodoNote(todoId, todoNoteDto);
     }
 
@@ -36,6 +38,16 @@ public class TodoController {
 
     @PutMapping("move/todo-note/{toId}/{todoNoteId}")
     public TodoDto moveTodoNode(@PathVariable("toId") long toId, @PathVariable("todoNoteId") long todoNoteId) {
-        return todoService.updateTodoNote(toId, todoNoteId);
+        return todoService.moveTodoNote(toId, todoNoteId);
+    }
+
+    @DeleteMapping("delete/{todoId}")
+    public ResponseEntity deleteTodo(@PathVariable("todoId") long todoId) {
+        return ResponseEntity.ok(todoService.deleteTodo(todoId));
+    }
+
+    @DeleteMapping("delete/todo-note/{todoNoteId}")
+    public ResponseEntity deleteTodoNote(@PathVariable("todoNoteId") long todoId) {
+        return ResponseEntity.ok(todoService.deleteTodoNote(todoId));
     }
 }

@@ -7,6 +7,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Optional;
 
@@ -26,8 +29,10 @@ public class User {
     @Column(nullable = false)
     private String fullName;
     @Column(nullable = false, unique = true)
+    @Email(message = "Enter Valid Email id")
     private String email;
     @Column(nullable = false, unique = true)
+    @Size(min = 10)
     private String phone;
     private String address;
     private String role;
@@ -36,6 +41,7 @@ public class User {
     @Temporal(TemporalType.DATE)
     private Date joiningDate;
     @Temporal(TemporalType.DATE)
+    @Past
     private Date dob;
 
     @Enumerated(EnumType.STRING)
