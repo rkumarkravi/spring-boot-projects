@@ -23,25 +23,13 @@ public class Absence {
     private AbsenceType absenceType;
     private String leaveReason;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date from;
+    private Date fromDate;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date to;
+    private Date toDate;
     private String comments;
     private Status status;
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_applied_by", nullable = false)
     private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public AbsenceType getAbsenceType() {
-        return absenceType;
-    }
 
 }

@@ -15,7 +15,7 @@ public class AbsenceDto implements Serializable {
     private Long id;
     private AbsenceType absenceType;
     private String leaveReason;
-    private Date from;
-    private Date to;
+    private Date fromDate;
+    private Date toDate;
     private String comments;
 }
