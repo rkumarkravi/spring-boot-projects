@@ -1,5 +1,7 @@
 package com.rk.hrm.models;
 
+import com.rk.hrm.enums.Status;
+import com.rk.hrm.enums.TaskTypes;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,9 +25,14 @@ public class Task {
     private String taskDesc;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdOn;
-
+    @Enumerated(EnumType.STRING)
+    private TaskTypes taskTypes;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
+    @JoinColumn(name = "assigned_for", nullable = false, updatable = false)
+    private User assignedFor;
+    @ManyToOne
+    @JoinColumn(name = "assigned_to", updatable = false)
+    private User assignedTo;
 }

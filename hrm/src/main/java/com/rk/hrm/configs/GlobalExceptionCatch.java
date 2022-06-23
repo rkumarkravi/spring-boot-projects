@@ -2,6 +2,7 @@ package com.rk.hrm.configs;
 
 import com.rk.hrm.dtos.ExceptionHrmModel;
 import com.rk.hrm.exceptions.ResourceNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.Date;
 
 @ControllerAdvice
 @RestController
+@Slf4j
 public class GlobalExceptionCatch extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
@@ -31,6 +33,7 @@ public class GlobalExceptionCatch extends ResponseEntityExceptionHandler {
                 rnfe.getLocalizedMessage(),
                 request.getDescription(false),
                 new Date());
+        rnfe.printStackTrace();
         return new ResponseEntity<>(exceptionHrmModel, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -1,5 +1,6 @@
 package com.rk.hrm.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rk.hrm.enums.GENDER;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Data
 @AllArgsConstructor
+@JsonIgnoreProperties(value = {"password"})
 public class UserDto implements Serializable {
     private Long id;
     private String username;

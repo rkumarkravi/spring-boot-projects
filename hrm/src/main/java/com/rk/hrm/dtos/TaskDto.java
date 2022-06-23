@@ -1,5 +1,7 @@
 package com.rk.hrm.dtos;
 
+import com.rk.hrm.enums.Status;
+import com.rk.hrm.enums.TaskTypes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +17,8 @@ public class TaskDto implements Serializable {
     private String taskTitle;
     private String taskDesc;
     private Date createdOn;
-    private UserDto user;
+    private TaskTypes taskTypes;
+    private Status status;
+    private UserDto assignedFor;
+    private UserDto assignedTo;
 }
