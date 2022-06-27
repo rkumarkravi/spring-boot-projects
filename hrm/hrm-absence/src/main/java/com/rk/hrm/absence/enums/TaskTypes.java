@@ -1,0 +1,5 @@
+package com.rk.hrm.absence.enums;
+
+public enum TaskTypes {
+    ATTENDANCE_APPROVE, MANAGER_CHANGE, LEAVE_APPROVE, DETAILS_UPDATE, CLEARANCE, RATING, TRAINING, NOTIFICATION
+}

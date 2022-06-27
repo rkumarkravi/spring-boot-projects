@@ -1,0 +1,5 @@
+package com.rk.hrm.absence.enums;
+
+public enum Status {
+    PENDING, APPROVED, REJECTED, CANCELLED, COMPLETED, IN_PROGRESS, ON_HOLD, NOT_STARTED, NOT_APPLICABLE, NOT_AVAILABLE
+}
