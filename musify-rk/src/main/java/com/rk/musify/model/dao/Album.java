@@ -37,7 +37,6 @@ public class Album {
 	Date createdDate=new Date();
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
 	@JoinColumn(name = "albumId")
-	@JsonIgnore
 	Set<MusicFile> musicFiles;
 	String albumArt;
 
