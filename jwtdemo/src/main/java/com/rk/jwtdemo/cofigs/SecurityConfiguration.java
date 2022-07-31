@@ -30,9 +30,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    
+    
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	http.cors();
         http.csrf()
                 .disable()
                 .authorizeRequests()

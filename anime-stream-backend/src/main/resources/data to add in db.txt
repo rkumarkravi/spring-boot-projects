@@ -1,0 +1,27 @@
+{
+    "animeType":"single",
+    "name":"Naruto",
+    "dateOfReleased":"Jan 2013",
+    "credits":"Ravi Kumar",
+    "animeThumbnail":"https://m.media-amazon.com/images/M/MV5BMDI3ZDY4MDgtN2U2OS00Y2YzLWJmZmYtZWMzOTM3YWFjYmUyXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+    "description":"Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hoka…"
+}
+
+
+{
+    "animeType":"seasons",
+    "name":"One Punch Man",
+    "dateOfReleased":"2015–2019",
+    "credits":"Manga",
+    "animeThumbnail":"https://m.media-amazon.com/images/M/MV5BMTNmZDE2NDEtNTg3MS00OTE1LThlZGUtOGZkZTg0NTUyNGVmXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg",
+    "description":"The story of Saitama, a hero that does it just for fun & can defeat his enemies with a single punch."
+}
+
+{
+    "animeType":"seasons",
+    "name":"Pokémon",
+    "dateOfReleased":"1997–",
+    "credits":"Manga",
+    "animeThumbnail":"https://m.media-amazon.com/images/M/MV5BMTI4YTUwYWMtY2M5NC00NGY2LWIzM2YtMzgyODA5YTMxMzgzXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+    "description":"Ash Ketchum, his yellow pet Pikachu, and his human friends explore a world of powerful creatures."
+}

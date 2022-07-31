@@ -1,0 +1,74 @@
+User Features
+--------------------
+---register
+---login
+---plan chooser
+---my list
+
+
+Models:
+--------------------
+User -d
+---uid
+---firstname
+---lastname
+---addedOn
+---emailId
+---mobileNo
+---password
+
+Devices (To check whether according to plan how many users can watch at a time) -d
+---did
+---uid
+---deviceMac
+---status
+
+MyList -d
+---mid
+---uid
+---aid
+---addedOn
+
+Plans -d
+---pid
+---price
+---months
+---devicesAllowed
+
+UserPlans -d
+---upid
+---pid
+---uid
+---addedOn
+---validTill
+---payid
+
+PaymentDetails
+---payid
+---paidOn
+---paymentModeId
+
+PaymentModeDetails
+---paymentModeId
+---details
+
+Anime -d
+---aid
+---type (seasons,single)
+---videos(map)
+
+Video -d
+---vid
+---aid
+---totaltime
+---tid(thumbnail)
+---title
+---bid
+
+VideoBlob -d
+---bid
+---blob
+
+Thumbnail -d
+---tid
+---blob

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.*;
 
@@ -96,5 +97,14 @@ public class UserService implements UserDetailsService {
         }
         return user;
 
+    }
+    
+
+    public UserInfo getUserFromToken(HttpServletRequest httpServletRequest){
+    	String username = jwtUtility.getUsernameFromToken(httpServletRequest.getHeader("Authorization").split(" ")[1]);
+		UserInfo uinfo = this.getUserByEmailAndSetOtp(username);
+		
+		return uinfo;
+		
     }
 }
