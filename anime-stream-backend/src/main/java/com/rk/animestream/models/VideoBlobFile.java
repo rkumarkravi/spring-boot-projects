@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "video_blob")
+@Table(name = "video_blob_file")
 @NoArgsConstructor
 @Data
-public class VideoBlob {
+public class VideoBlobFile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "vbid", nullable = false)
@@ -17,4 +17,5 @@ public class VideoBlob {
 
     @Lob
     byte[] vBlob;
+    String vFile;
 }

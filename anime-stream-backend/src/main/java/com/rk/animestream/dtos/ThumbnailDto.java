@@ -12,4 +12,5 @@ import java.io.Serializable;
 public class ThumbnailDto implements Serializable {
     private Long tId;
     private byte[] tBlob;
+    private String file;
 }

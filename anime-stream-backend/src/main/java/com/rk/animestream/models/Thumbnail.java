@@ -16,4 +16,5 @@ public class Thumbnail {
     private Long tId;
     @Lob
     byte[] tBlob;
+    String file;
 }

@@ -13,6 +13,6 @@ public class VideoDto implements Serializable {
     private Long vId;
     private String totalTime;
     private String title;
-    private VideoBlobDto videoBlob;
+    private VideoBlobFileDto videoBlobFile;
     private ThumbnailDto thumbnail;
 }

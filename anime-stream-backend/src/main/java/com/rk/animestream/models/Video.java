@@ -20,8 +20,8 @@ public class Video {
     private String title;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
-    @JoinColumn(name = "video_blob_id", nullable = false)
-    private VideoBlob videoBlob;
+    @JoinColumn(name = "video_blob_file_id", nullable = false)
+    private VideoBlobFile videoBlobFile;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
     @JoinColumn(name = "thumbnail_tid", nullable = false)

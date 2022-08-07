@@ -19,11 +19,17 @@ public class Anime {
     private Long aId;
     @Enumerated(EnumType.STRING)
     private AnimeType animeType;
+    @Column(unique = true)
     private String name;
-    private String dateOfReleased;
+    private String dateOfRelease;
     private String credits;
     private String description;
-    private String animeThumbnail;
+    private String animeBackdrop;
+    private String poster;
+    private String originCountry;
+    private Integer likes;
+    @Column( length = 2000 )
+    private String trailerLink;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "anime_aid")

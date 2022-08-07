@@ -16,9 +16,13 @@ public class AnimeDto implements Serializable {
     private Long aId;
     private AnimeType animeType;
     private String name;
-    private String dateOfReleased;
+    private String dateOfRelease;
     private String credits;
     private String description;
-    private String animeThumbnail;
+    private String animeBackdrop;
+    private String poster;
+    private String originCountry;
+    private Integer likes;
+    private String trailerLink;
     private Set<VideoDto> videos = new LinkedHashSet<>();
 }

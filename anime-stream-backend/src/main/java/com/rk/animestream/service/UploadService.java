@@ -3,14 +3,11 @@ package com.rk.animestream.service;
 import com.google.gson.Gson;
 import com.rk.animestream.daos.AnimeRepository;
 import com.rk.animestream.daos.ThumbnailRepository;
-import com.rk.animestream.daos.VideoBlobRepository;
+import com.rk.animestream.daos.VideoBlobFileRepository;
 import com.rk.animestream.daos.VideoRepository;
 import com.rk.animestream.dtos.VideoDto;
 import com.rk.animestream.mapper.VideoMapper;
-import com.rk.animestream.models.Anime;
-import com.rk.animestream.models.Thumbnail;
-import com.rk.animestream.models.Video;
-import com.rk.animestream.models.VideoBlob;
+import com.rk.animestream.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +30,7 @@ public class UploadService {
     VideoMapper videoMapper;
 
     @Autowired
-    VideoBlobRepository videoBlobRepository;
+    VideoBlobFileRepository videoBlobFileRepository;
 
 
     Gson gson=new Gson();
@@ -42,11 +39,9 @@ public class UploadService {
 
         Thumbnail thumbnail1=new Thumbnail();
         thumbnail1.setTBlob(thumbnail);
-//        thumbnail1=thumbnailRepository.save(thumbnail1);
 
-        VideoBlob videoBlob = new VideoBlob();
+        VideoBlobFile videoBlob = new VideoBlobFile();
         videoBlob.setVBlob(videoFiles.get(0));
-//        videoBlob=videoBlobRepository.save(videoBlob);
 
         Map<String, String> map=gson.fromJson(java.lang.String.valueOf(videoDetails), HashMap.class);
         Video video=new Video();
@@ -55,7 +50,32 @@ public class UploadService {
 
         video.setThumbnail(thumbnail1);
 
-        video.setVideoBlob(videoBlob);
+        video.setVideoBlobFile(videoBlob);
+
+        video=videoRepository.save(video);
+
+        Anime anime =animeRepository.findById(aid).get();
+        anime.getVideos().add(video);
+        animeRepository.save(anime);
+
+        return videoMapper.videoToVideoDto(video);
+    }
+
+    public VideoDto uploadFileToFileServer(Long aid, String videoDetails, String videoFileName, String thumbnailFileName){
+        Thumbnail thumbnail1=new Thumbnail();
+        thumbnail1.setFile(thumbnailFileName);
+
+        VideoBlobFile videoBlob = new VideoBlobFile();
+        videoBlob.setVFile(videoFileName);
+
+        Map<String, String> map=gson.fromJson(java.lang.String.valueOf(videoDetails), HashMap.class);
+        Video video=new Video();
+        video.setTitle(map.get("title"));
+        video.setTotalTime(map.get("totalTime"));
+
+        video.setThumbnail(thumbnail1);
+
+        video.setVideoBlobFile(videoBlob);
 
         video=videoRepository.save(video);
 

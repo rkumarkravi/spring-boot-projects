@@ -28,9 +28,10 @@ public class AnimeService {
     public AnimeDto getAnime(Long aid){
         return animeMapper.animeToAnimeDto(animeRepository.getReferenceById(aid));
     }
-    
+
     public PageImpl<AnimeDto> getAllAnime(Pageable pageable){
         Page<Anime> recentAdded = this.animeRepository.findAll(pageable);
         return new PageImpl<>(recentAdded.getContent().stream().map(anime->animeMapper.animeToAnimeDto(anime)).collect(Collectors.toList()));
     }
+
 }
