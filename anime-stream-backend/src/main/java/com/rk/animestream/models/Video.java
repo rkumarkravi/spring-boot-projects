@@ -26,4 +26,6 @@ public class Video {
     @OneToOne(cascade = CascadeType.ALL, optional = false, orphanRemoval = true)
     @JoinColumn(name = "thumbnail_tid", nullable = false)
     private Thumbnail thumbnail;
+
+    private Long seasonNo;
 }

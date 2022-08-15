@@ -32,9 +32,19 @@ public class AnimeController {
     }
 
     @GetMapping("/get/{aid}")
-    public ApiResponse addAnime(@PathVariable Long aid, HttpServletRequest httpRequest){
+    public ApiResponse getAnime(@PathVariable Long aid, HttpServletRequest httpRequest){
         ApiResponse<AnimeDto> apiResponse=new ApiResponse<>();
         apiResponse.setData(animeService.getAnime(aid));
+        apiResponse.setMessage("Anime fetch successful");
+        apiResponse.setPath(String.valueOf(httpRequest.getRequestURI()));
+        apiResponse.setStatus(ResponseStatus.SUCCESS);
+        return apiResponse;
+    }
+
+    @GetMapping("/get/{aid}/{seasonNo}")
+    public ApiResponse getAnimeBySeason(@PathVariable Long aid,@PathVariable Long seasonNo, HttpServletRequest httpRequest){
+        ApiResponse<AnimeDto> apiResponse=new ApiResponse<>();
+        apiResponse.setData(animeService.getAnime(aid,seasonNo));
         apiResponse.setMessage("Anime fetch successful");
         apiResponse.setPath(String.valueOf(httpRequest.getRequestURI()));
         apiResponse.setStatus(ResponseStatus.SUCCESS);

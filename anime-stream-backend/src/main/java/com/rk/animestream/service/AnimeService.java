@@ -10,6 +10,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.NoResultException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,6 +29,15 @@ public class AnimeService {
 
     public AnimeDto getAnime(Long aid){
         return animeMapper.animeToAnimeDto(animeRepository.getReferenceById(aid));
+    }
+
+    public AnimeDto getAnime(Long aid,Long seasonNo){
+        Optional<Anime> anime = animeRepository.getAnimeByIdAndSeasonNo(aid, seasonNo);
+        if(anime.isPresent()){
+          return  animeMapper.animeToAnimeDto(anime.get());
+        }else{
+            throw new NoResultException("No Anime with id and season available!!");
+        }
     }
 
     public PageImpl<AnimeDto> getAllAnime(Pageable pageable){

@@ -15,4 +15,5 @@ public class VideoDto implements Serializable {
     private String title;
     private VideoBlobFileDto videoBlobFile;
     private ThumbnailDto thumbnail;
+    private Long seasonNo;
 }

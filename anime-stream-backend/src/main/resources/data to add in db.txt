@@ -8,7 +8,7 @@
     "description":"Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hoka…",
 	"trailerLink":"https://youtu.be/WhPOcizrFqg"
 }
-
+fb:a$Zx#G4Sezk$
 
 {
     "animeType":"seasons",
@@ -49,7 +49,18 @@
     "animeBackdrop":"https://image.tmdb.org/t/p/original/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg",
 	"poster":"https://image.tmdb.org/t/p/w500/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
     "description":"Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.",
-	"origin_country":"Mexico",	trailerLink:"https://dl109.dlmate33.xyz/?file=M3R4SUNiN3JsOHJ6WWQ3aTdPRFA4NW1rRVJIOG12STJqdEEyakNNM0ZLOUZxWjVrOCt1ak44WmRaWlFiMzR1c0Z0c2YvRENUWmRpT2V5S2N1b3d2VkhhVDVOTjJ0am1FM284a1Y4eGlSVjJ6dE9DbG56Si9pQXUrU3NyTUhMUlRmMGdxOHhnencyaWUzS1dTdnh6MHRrSzlwbG1MTVdGWWxDSUVLT0hGODVvTmgwL0dmNk9oZ2JaUjZIUzU0NjFUMXNIUG1sZm4wclVCNll3dERsUTZmb0FKbjUzdzBLM2xpd0VjbUlrVnlFaXdvTytqVzg5alNmektMRzRvYlhCUCt2bXlXQmxL"
+	"origin_country":"Mexico",	"trailerLink":"https://dl109.dlmate33.xyz/?file=M3R4SUNiN3JsOHJ6WWQ3aTdPRFA4NW1rRVJIOG12STJqdEEyakNNM0ZLOUZxWjVrOCt1ak44WmRaWlFiMzR1c0Z0c2YvRENUWmRpT2V5S2N1b3d2VkhhVDVOTjJ0am1FM284a1Y4eGlSVjJ6dE9DbG56Si9pQXUrU3NyTUhMUlRmMGdxOHhnencyaWUzS1dTdnh6MHRrSzlwbG1MTVdGWWxDSUVLT0hGODVvTmgwL0dmNk9oZ2JaUjZIUzU0NjFUMXNIUG1sZm4wclVCNll3dERsUTZmb0FKbjUzdzBLM2xpd0VjbUlrVnlFaXdvTytqVzg5alNmektMRzRvYlhCUCt2bXlXQmxL"
+}
+
+{
+    "animeType":"single",
+    "name":"The Sandman",
+    "dateOfRelease":"2022",
+    "credits":"Series",
+    "animeBackdrop":"https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/6KyJeOW7vTW0czdR0S6wzXAcfmw.jpg",
+	"poster":"https://image.tmdb.org/t/p/w600_and_h900_bestv2/q54qEgagGOYCq5D1903eBVMNkbo.jpg",
+    "description":"After years of imprisonment, Morpheus — the King of Dreams — embarks on a journey across worlds to find what was stolen from him and restore his power.",
+	"origin_country":"Mexico",	"trailerLink":"https://dl109.dlmate33.xyz/?file=M3R4SUNiN3JsOHJ6WWQ3aTdPRFA4NW1rRVJIOG12STJqdEEyakNNM0ZLOUZxWjVrOCt1ak44WmRaWlFiMzR1c0Z0c2YvRENUWmRpT2V5S2N1b3d2VkhhVDVOTjJ0am1FM284a1Y4eGlSVjJ6dE9DbG56Si9pQXUrU3NyTUhMUlRmMGdxOHhnencyaWUzS1dTdnh6MHRrSzlwbG1MTVdGWWxDSUVLT0hGODVvTmgwL0dmNk9oZ2JaUjZIUzU0NjFUMXNIUG1sZm4wclVCNll3dERsUTZmb0FKbjUzdzBLM2xpd0VjbUlrVnlFaXdvTytqVzg5alNmektMRzRvYlhCUCt2bXlXQmxL"
 }
 
 --backdrop -- https://image.tmdb.org/t/p/original/p1F51Lvj3sMopG948F5HsBbl43C.jpg

@@ -45,8 +45,8 @@ public class VideoUploader {
         return new ResponseEntity<VideoDto>(uploadService.uploadFileToDb(aid,videoDetails,videoFiles,thumbnail.getBytes()),HttpStatus.OK);
     }
 
-    @PostMapping(path = "/uploadFileUrl/{aid}",consumes ={MediaType.APPLICATION_JSON_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<VideoDto> uploadVideoFileUrl(@PathVariable("aid") Long aid, @RequestPart("videoDetails") String videoDetails, @RequestPart("videoFiles") List<MultipartFile> videoFileList, @RequestPart("thumbnail") MultipartFile thumbnail) throws Exception {
+    @PostMapping(path = "/uploadFileUrl/{aid}/{seasonNo}",consumes ={MediaType.APPLICATION_JSON_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<VideoDto> uploadVideoFileUrl(@PathVariable("aid") Long aid,@PathVariable("seasonNo") Long seasonNo, @RequestPart("videoDetails") String videoDetails, @RequestPart("videoFiles") List<MultipartFile> videoFileList, @RequestPart("thumbnail") MultipartFile thumbnail) throws Exception {
         log.debug("aid:{},{},{},{}",aid,videoDetails,videoFileList,thumbnail);
         String videoFileName=null,thumbnailFileName=null;
         for(MultipartFile videoFile:videoFileList) {
@@ -85,6 +85,6 @@ public class VideoUploader {
         if(videoFileName==null || thumbnailFileName==null){
             throw new Exception("File is null!");
         }
-        return new ResponseEntity<VideoDto>(uploadService.uploadFileToFileServer(aid,videoDetails,videoFileName,thumbnailFileName),HttpStatus.OK);
+        return new ResponseEntity<VideoDto>(uploadService.uploadFileToFileServer(aid,seasonNo,videoDetails,videoFileName,thumbnailFileName),HttpStatus.OK);
     }
 }

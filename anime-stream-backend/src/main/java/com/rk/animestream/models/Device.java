@@ -17,11 +17,12 @@ public class Device {
     private Long did;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "uid", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     private String deviceIdentifier;
     @Enumerated(EnumType.STRING)
+    @Column(name = "device_status")
     private DeviceStatus status;
 
 }

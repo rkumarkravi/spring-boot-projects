@@ -20,8 +20,8 @@ public class VideoDownloader {
         return downloadService.getVideo(aid);
     }
 
-    @GetMapping(value = "downloadFromRes/{aid}", produces = "video/mp4")
-    public Mono<Resource> getVideosByResource(@PathVariable("aid") Long aid, @RequestHeader("Range") String range) {
+    @GetMapping(value = "downloadFromRes/{vid}", produces = "video/mp4")
+    public Mono<Resource> getVideosByResource(@PathVariable("vid") Long aid, @RequestHeader("Range") String range) {
         log.debug("range in bytes() : " + range);
         return downloadService.getVideoFromResource(aid);
     }

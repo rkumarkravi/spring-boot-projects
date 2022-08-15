@@ -61,7 +61,7 @@ public class UploadService {
         return videoMapper.videoToVideoDto(video);
     }
 
-    public VideoDto uploadFileToFileServer(Long aid, String videoDetails, String videoFileName, String thumbnailFileName){
+    public VideoDto uploadFileToFileServer(Long aid, Long seasonNo, String videoDetails, String videoFileName, String thumbnailFileName){
         Thumbnail thumbnail1=new Thumbnail();
         thumbnail1.setFile(thumbnailFileName);
 
@@ -76,6 +76,7 @@ public class UploadService {
         video.setThumbnail(thumbnail1);
 
         video.setVideoBlobFile(videoBlob);
+        video.setSeasonNo(seasonNo);
 
         video=videoRepository.save(video);
 
