@@ -27,4 +27,5 @@ public class User {
     private String mobileNo;
     @Column(nullable = false)
     private String password;
+    private String otp;
 }

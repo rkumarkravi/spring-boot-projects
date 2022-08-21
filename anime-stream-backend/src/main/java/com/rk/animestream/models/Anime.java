@@ -23,6 +23,7 @@ public class Anime {
     private String name;
     private String dateOfRelease;
     private String credits;
+    @Column( length = 2000 )
     private String description;
     private String animeBackdrop;
     private String poster;

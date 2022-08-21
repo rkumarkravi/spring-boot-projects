@@ -8,16 +8,30 @@
     "description":"Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hoka…",
 	"trailerLink":"https://youtu.be/WhPOcizrFqg"
 }
+
+{
+    "animeType":"single",
+    "name":"Super Dragon Ball Heroes",
+    "dateOfRelease":"2018",
+    "credits":"Ravi Kumar",
+    "animeBackdrop":"https://image.tmdb.org/t/p/original/ojaiYdcdHP1pCM2nL9lI8Qb0LQj.jpg",
+	"poster":"https://image.tmdb.org/t/p/w600_and_h900_bestv2/xLal6fXNtiJN6Zw6qk21xAtdOeN.jpg",
+    "description":"Trunks returns from the future to train with Goku and Vegeta. However, it disappears without warning. Then the mysterious Fu bursts in, telling them that Trunks has been imprisoned in the Prison Planet, a mysterious complex in an unknown place in the universes. The group seeks the dragon balls to free Trunks, but an endless battle awaits them! Will Goku and the others rescue Trunks and escape the Prison Planet?",
+	"trailerLink":"https://youtu.be/qrOlw3Y0Ous",
+	"origin_country":"Japan"
+}
 fb:a$Zx#G4Sezk$
 
 {
     "animeType":"seasons",
     "name":"One Punch Man",
-    "dateOfReleased":"2015–2019",
+    "dateOfRelease":"2015–2019",
     "credits":"Manga",
-    "animeThumbnail":"https://m.media-amazon.com/images/M/MV5BMTNmZDE2NDEtNTg3MS00OTE1LThlZGUtOGZkZTg0NTUyNGVmXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg",
-    "description":"The story of Saitama, a hero that does it just for fun & can defeat his enemies with a single punch.",
+    "animeBackdrop":"https://image.tmdb.org/t/p/original/9xzZBZ5VhIIhyKDKK3t89ggx7cS.jpg",
+    "poster":"https://image.tmdb.org/t/p/w600_and_h900_bestv2/iE3s0lG5QVdEHOEZnoAxjmMtvne.jpg",
+	"description":"The story of Saitama, a hero that does it just for fun & can defeat his enemies with a single punch.",
 	"origin_country":"Japan",
+	"trailerLink":"https://youtu.be/2JAElThbKrI"
 	
 }
 

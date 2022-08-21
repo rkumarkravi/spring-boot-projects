@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "e252771f-385d-4987-98bf-7e2ea0d3d269",
+		"name": "Anime Streamer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "anime add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"animeType\":\"seasons\",\r\n    \"name\":\"One Punch Man\",\r\n    \"dateOfRelease\":\"2015–2019\",\r\n    \"credits\":\"Manga\",\r\n    \"animeBackdrop\":\"https://image.tmdb.org/t/p/original/9xzZBZ5VhIIhyKDKK3t89ggx7cS.jpg\",\r\n    \"poster\":\"https://image.tmdb.org/t/p/w600_and_h900_bestv2/iE3s0lG5QVdEHOEZnoAxjmMtvne.jpg\",\r\n\t\"description\":\"The story of Saitama, a hero that does it just for fun & can defeat his enemies with a single punch.\",\r\n\t\"origin_country\":\"Japan\",\r\n\t\"trailerLink\":\"https://youtu.be/2JAElThbKrI\"\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/api/v1/anime/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"api",
+						"v1",
+						"anime",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "anime get by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"animeType\":\"single\",\r\n    \"name\":\"Naruto\",\r\n    \"dateOfReleased\":\"Jan 2013\",\r\n    \"credits\":\"Ravi Kumar\",\r\n    \"description\":\"Naruto is a Japanese manga series written and illustrated by Masashi Kishimoto. It tells the story of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hoka…\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/api/v1/anime/get/12/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"api",
+						"v1",
+						"anime",
+						"get",
+						"12",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "anime get All",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"page\": 0,\r\n    \"size\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/api/v1/anime/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"api",
+						"v1",
+						"anime",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Video",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "thumbnail",
+							"type": "file",
+							"src": "/D:/animestreamdata/thorloveandthunderthumb.png"
+						},
+						{
+							"key": "videoDetails",
+							"value": "{\"title\":\"Thor\",\"totalTime\":\"10:39\"}",
+							"type": "text"
+						},
+						{
+							"key": "videoFiles",
+							"type": "file",
+							"src": "/D:/animestreamdata/Marvel Studios Thor Love and Thunder  Official Trailer.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/api/v1/upload/14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"api",
+						"v1",
+						"upload",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Video File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "thumbnail",
+							"type": "file",
+							"src": "/C:/Users/errku/Downloads/land_of_the_king_by_nele_diel_ddw4bko.jpg"
+						},
+						{
+							"key": "videoDetails",
+							"value": "{\"title\":\"Naruto Episode 1\",\"totalTime\":\"18:39\"}",
+							"type": "text"
+						},
+						{
+							"key": "videoFiles",
+							"type": "file",
+							"src": "/D:/animestreamdata/Naruto episode 1 season 2.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/api/v1/uploadFileUrl/1/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"api",
+						"v1",
+						"uploadFileUrl",
+						"1",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"Ravi\",\r\n    \"lastname\":\"Kumar\",\r\n    \"emailId\":\"rk@gmail.com\",\r\n    \"mobileNo\":\"8080123455\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailId\":\"rk@gmail.com\",\r\n    \"password\":\"12345\",\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
