@@ -107,7 +107,7 @@ public class UserController {
         return ResponseEntity.ok(jsonObject);
     }
 
-    @PostMapping("/validate")
+    @GetMapping("/validate")
     public ResponseEntity<?> tokenExpired(@RequestParam("t") String token) {
         log.info(token);
         if (token == "") {
