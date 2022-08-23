@@ -33,8 +33,8 @@ public class UserAuthService implements UserDetailsService {
         Optional<User> userOptional = userRepo.findByEmailId(username);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            user.setOtp(Utils.getOTP());
-            user = userRepo.save(user);
+//            user.setOtp(Utils.getOTP());
+//            user = userRepo.save(user);
             return new org.springframework.security.core.userdetails.User(user.getEmailId(), user.getPassword(), new ArrayList<>());
         } else {
             throw new UsernameNotFoundException("User not found");

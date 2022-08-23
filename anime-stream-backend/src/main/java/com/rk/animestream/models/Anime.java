@@ -35,4 +35,5 @@ public class Anime {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "anime_aid")
     private Set<Video> videos = new LinkedHashSet<>();
+
 }
