@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class Anime {
     private AnimeType animeType;
     @Column(unique = true)
     private String name;
-    private String dateOfRelease;
+    private Date dateOfRelease;
     private String credits;
     @Column( length = 2000 )
     private String description;
@@ -31,6 +32,7 @@ public class Anime {
     private Integer likes;
     @Column( length = 2000 )
     private String trailerLink;
+    private Boolean released=false;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "anime_aid")

@@ -2,3 +2,9 @@ essentials:
 
 db url local:
 https://localhost:5500/em
+
+orcl
+ivar
+oracle
+
+flutter run -d chrome --web-hostname localhost --web-port 5050

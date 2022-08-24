@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class AnimeDto implements Serializable {
     private Long aId;
     private AnimeType animeType;
     private String name;
-    private String dateOfRelease;
+    private Date dateOfRelease;
     private String credits;
     private String description;
     private String animeBackdrop;
@@ -24,5 +25,6 @@ public class AnimeDto implements Serializable {
     private String originCountry;
     private Integer likes;
     private String trailerLink;
+    private Boolean released = false;
     private Set<VideoDto> videos = new LinkedHashSet<>();
 }

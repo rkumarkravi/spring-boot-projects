@@ -12,7 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/anime")
@@ -58,5 +60,10 @@ public class AnimeController {
         log.debug("page :{}, size :{}",pageNo,pageSize);
         Pageable pageable= PageRequest.of(pageNo,pageSize);
         return this.animeService.getAllAnime(pageable);
+    }
+    @GetMapping("/getByDate")
+    public Set<AnimeDto> getAnimesByDate(@RequestParam() Date date){
+        log.debug("date is :{}",date);
+        return this.animeService.getForReleaseCalender(date);
     }
 }

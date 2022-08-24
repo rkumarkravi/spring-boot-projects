@@ -11,7 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.NoResultException;
+import java.util.Date;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,7 +44,11 @@ public class AnimeService {
 
     public PageImpl<AnimeDto> getAllAnime(Pageable pageable){
         Page<Anime> recentAdded = this.animeRepository.findAll(pageable);
-        return new PageImpl<>(recentAdded.getContent().stream().map(anime->animeMapper.animeToAnimeDto(anime)).collect(Collectors.toList()));
+        return new PageImpl<>(recentAdded.getContent().stream().filter(x->x.getReleased()==true).map(anime->animeMapper.animeToAnimeDto(anime)).collect(Collectors.toList()));
+    }
+
+    public Set<AnimeDto> getForReleaseCalender(Date d){
+        return this.animeRepository.findDistinctByDateOfReleaseOrderByNameAsc(d).stream().map(x->animeMapper.animeToAnimeDto(x)).collect(Collectors.toSet());
     }
 
 }
