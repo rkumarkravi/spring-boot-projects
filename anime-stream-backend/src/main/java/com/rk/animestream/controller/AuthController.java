@@ -49,21 +49,21 @@ public class AuthController {
         return new ResponseEntity<UserDto>(userAuthService.getUserFromToken(httpServletRequest), HttpStatus.OK);
     }
 
-    @PostMapping("/login")
-    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception {
-        log.debug("authenticate: {}",jwtRequest);
-        try {authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(jwtRequest.getEmailId(), jwtRequest.getPassword()));
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
-        UserDto user = userService.getUserByEmail(jwtRequest.getEmailId());
-        final UserDetails userDetails = new User(user.getEmailId(), user.getPassword(), new ArrayList<>());
-
-        final String token = jwtUtility.generateToken(userDetails);
-
-        return new JwtResponse(token, user);
-    }
+//    @PostMapping("/login")
+//    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception {
+//        log.debug("authenticate: {}",jwtRequest);
+//        try {authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(jwtRequest.getEmailId(), jwtRequest.getPassword()));
+//        } catch (BadCredentialsException e) {
+//            throw new Exception("INVALID_CREDENTIALS", e);
+//        }
+//        UserDto user = userService.getUserByEmail(jwtRequest.getEmailId());
+//        final UserDetails userDetails = new User(user.getEmailId(), user.getPassword(), new ArrayList<>());
+//
+//        final String token = jwtUtility.generateToken(userDetails);
+//
+//        return new JwtResponse(token, user);
+//    }
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserDto user) throws Exception {

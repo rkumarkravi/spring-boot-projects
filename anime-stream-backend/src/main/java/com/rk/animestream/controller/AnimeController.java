@@ -1,6 +1,7 @@
 package com.rk.animestream.controller;
 
 import com.rk.animestream.dtos.AnimeDto;
+import com.rk.animestream.dtos.AnimeSearchDto;
 import com.rk.animestream.enums.ResponseStatus;
 import com.rk.animestream.pojos.ApiResponse;
 import com.rk.animestream.service.AnimeService;
@@ -65,5 +66,11 @@ public class AnimeController {
     public Set<AnimeDto> getAnimesByDate(@RequestParam() Date date){
         log.debug("date is :{}",date);
         return this.animeService.getForReleaseCalender(date);
+    }
+
+    @GetMapping("/search")
+    public Set<AnimeDto> searchAnime(@RequestParam() String searchText){
+        log.debug("searchText is :{}",searchText);
+        return this.animeService.search(searchText);
     }
 }

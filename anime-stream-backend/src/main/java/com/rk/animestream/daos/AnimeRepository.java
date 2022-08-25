@@ -16,4 +16,7 @@ public interface AnimeRepository extends JpaRepository<Anime, Long> {
     @Query("select distinct a from Anime a where a.dateOfRelease = ?1 and a.released=false order by a.name")
     Set<Anime> findDistinctByDateOfReleaseOrderByNameAsc(Date dateOfRelease);
 
+    @Query("select a from Anime a where lower(a.name) like %?1% order by a.name")
+    Set<Anime> findByNameLikeOrderByNameAsc(@NonNull String name);
+
 }

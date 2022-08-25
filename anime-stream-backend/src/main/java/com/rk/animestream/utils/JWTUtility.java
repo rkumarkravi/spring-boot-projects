@@ -1,8 +1,10 @@
 package com.rk.animestream.utils;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
+@Slf4j
 public class JWTUtility implements Serializable {
 
     private static final long serialVersionUID = 234234523523L;
@@ -42,7 +45,13 @@ public class JWTUtility implements Serializable {
 
     //for retrieving any information from token we will need the secret key
     private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        Claims claims=null;
+        try {
+           claims= Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        }catch(ExpiredJwtException expiredJwtException){
+            log.error("Token Expired :: {}",expiredJwtException.getLocalizedMessage());
+        }
+        return claims;
     }
 
 

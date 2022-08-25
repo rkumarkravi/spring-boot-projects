@@ -2,7 +2,9 @@ package com.rk.animestream.service;
 
 import com.rk.animestream.daos.AnimeRepository;
 import com.rk.animestream.dtos.AnimeDto;
+import com.rk.animestream.dtos.AnimeSearchDto;
 import com.rk.animestream.mapper.AnimeMapper;
+import com.rk.animestream.mapper.AnimeSearchMapper;
 import com.rk.animestream.models.Anime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +26,9 @@ public class AnimeService {
 
     @Autowired
     AnimeMapper animeMapper;
+
+    @Autowired
+    AnimeSearchMapper animeSearchMapper;
 
     public AnimeDto addAnime(AnimeDto animeDto){
        return animeMapper.animeToAnimeDto(animeRepository.save(animeMapper.animeDtoToAnime(animeDto)));
@@ -49,6 +54,10 @@ public class AnimeService {
 
     public Set<AnimeDto> getForReleaseCalender(Date d){
         return this.animeRepository.findDistinctByDateOfReleaseOrderByNameAsc(d).stream().map(x->animeMapper.animeToAnimeDto(x)).collect(Collectors.toSet());
+    }
+
+    public Set<AnimeDto> search(String searchText){
+        return this.animeRepository.findByNameLikeOrderByNameAsc(searchText).parallelStream().map((x)->animeMapper.animeToAnimeDto(x)).collect(Collectors.toSet());
     }
 
 }

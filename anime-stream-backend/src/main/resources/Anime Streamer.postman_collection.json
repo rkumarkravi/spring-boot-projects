@@ -141,6 +141,64 @@
 			"response": []
 		},
 		{
+			"name": "anime get by date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authtoken}}",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/anime/api/v1/anime/getByDate?date=10/17/2023",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"api",
+						"v1",
+						"anime",
+						"getByDate"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "10/17/2023"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Upload Video",
 			"request": {
 				"auth": {
@@ -244,7 +302,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstname\":\"Ravi\",\r\n    \"lastname\":\"Kumar\",\r\n    \"emailId\":\"rk@gmail.com\",\r\n    \"mobileNo\":\"8080123455\",\r\n    \"password\":\"12345\"\r\n}",
+					"raw": "{\r\n    \"firstname\":\"Ravi2\",\r\n    \"lastname\":\"Kumar2\",\r\n    \"emailId\":\"rk2@gmail.com\",\r\n    \"mobileNo\":\"8080123456\",\r\n    \"password\":\"12345\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -274,7 +332,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"emailId\":\"rk@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+					"raw": "{\r\n    \"emailId\":\"rk2@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -332,7 +390,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{authtoken}}",
+							"value": "{{authtoken2}}",
 							"type": "string"
 						}
 					]
@@ -340,7 +398,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/anime/api/v1/user/myList/add/84",
+					"raw": "http://localhost:8080/anime/api/v1/user/myList/add/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -353,7 +411,7 @@
 						"user",
 						"myList",
 						"add",
-						"84"
+						"1"
 					]
 				}
 			},
@@ -375,7 +433,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/anime/api/v1/user/myList/remove/1",
+					"raw": "http://localhost:8080/anime/api/v1/user/myList/remove/83",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -388,7 +446,7 @@
 						"user",
 						"myList",
 						"remove",
-						"1"
+						"83"
 					]
 				}
 			},
@@ -435,6 +493,45 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "SearchText",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authtoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/anime/api/v1/anime/search?searchText=thor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"anime",
+						"api",
+						"v1",
+						"anime",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchText",
+							"value": "thor"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -460,7 +557,12 @@
 	"variable": [
 		{
 			"key": "authtoken",
-			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJya0BnbWFpbC5jb20iLCJleHAiOjE2NjEyODkzNjIsImlhdCI6MTY2MTI3MTM2Mn0.yq-h5b6p548KOXJF_XHjNtAK6o23-nEej0y_VuiB-qAAo4VsjJRHKG1EDt7f7wXwIRMkQn6s7Ft9OPxn7NMJ6w",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJya0BnbWFpbC5jb20iLCJleHAiOjE2NjE0NTExOTIsImlhdCI6MTY2MTQzMzE5Mn0.tD0BjSE8Fqs-W0fWdFSFTQ64mJs9COodS3k_rVPKN5iorY6KsLFSJwFTuYSDk-KwCV45B_beQSYqpyyUI5sE4Q",
+			"type": "default"
+		},
+		{
+			"key": "authtoken2",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyazJAZ21haWwuY29tIiwiZXhwIjoxNjYxMjkyNzQxLCJpYXQiOjE2NjEyNzQ3NDF9.QtkqOxNeLLRIGIWPKZX0jEjis8e4a0Ilp9jv2SOzkYv2ZPJnEeI3nWY5ZrMAbqvAb8XRhBonyRjxzuGSioZQMw",
 			"type": "default"
 		}
 	]

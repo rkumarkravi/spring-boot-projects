@@ -1,8 +1,10 @@
 package com.rk.animestream.config;
 
-import com.rk.animestream.filter.JwtFilter;
+import com.rk.animestream.filter.CustomFilterForAuthentication;
+import com.rk.animestream.filter.CustomFilterForAuthorization;
 import com.rk.animestream.service.UserAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,7 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -23,10 +24,14 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
     UserAuthService userService;
 
     @Autowired
-    JwtFilter jwtFilter;
+    CustomFilterForAuthorization customFilterForAuthorization;
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
+
+
+    @Value("${jwt.secret}")
+    private String secretKey;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -50,18 +55,15 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
 //        http.csrf().disable();
 //        http.authorizeRequests().anyRequest().permitAll();
 //        http.headers().frameOptions().disable();
+        CustomFilterForAuthentication customFilterForAuthentication = new CustomFilterForAuthentication(authenticationManagerBean(),secretKey);
+        customFilterForAuthentication.setFilterProcessesUrl("/login");
         http.cors();
-        http.csrf()
-                .disable()
-                .authorizeRequests()
-                .antMatchers("/auth/**","/api/v1/download/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        http.csrf().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.authorizeRequests().antMatchers("/auth/**","/login","/api/v1/download/**").permitAll();
+        http.authorizeRequests().anyRequest().authenticated();
+        http.addFilter(customFilterForAuthentication);
+        http.addFilterBefore(customFilterForAuthorization, UsernamePasswordAuthenticationFilter.class);
     }
 
 }
