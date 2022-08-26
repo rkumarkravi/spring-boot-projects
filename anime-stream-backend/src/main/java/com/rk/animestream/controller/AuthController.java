@@ -3,6 +3,8 @@ package com.rk.animestream.controller;
 import com.rk.animestream.dtos.JwtRequest;
 import com.rk.animestream.dtos.JwtResponse;
 import com.rk.animestream.dtos.UserDto;
+import com.rk.animestream.exceptions.ExpiredJwtTokenException;
+import com.rk.animestream.models.User;
 import com.rk.animestream.service.UserAuthService;
 import com.rk.animestream.service.UserService;
 import com.rk.animestream.utils.JWTUtility;
@@ -13,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,7 @@ public class AuthController {
     }
 
     @GetMapping("/userinfo")
-    public ResponseEntity<UserDto> userInfo(HttpServletRequest httpServletRequest) {
+    public ResponseEntity<UserDto> userInfo(HttpServletRequest httpServletRequest) throws ExpiredJwtTokenException {
         return new ResponseEntity<UserDto>(userAuthService.getUserFromToken(httpServletRequest), HttpStatus.OK);
     }
 
@@ -106,11 +107,15 @@ public class AuthController {
     }
 
     @GetMapping("/validate")
-    public ResponseEntity<?> tokenExpired(@RequestParam("t") String token) {
+    public ResponseEntity<?> tokenExpired(@RequestParam("t") String token) throws ExpiredJwtTokenException {
         log.info(token);
         if (token == "") {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.ok(userAuthService.checkUserActive(token));
+        User userObj = userAuthService.checkUserActive(token);
+        if(userObj==null){
+            return new ResponseEntity<>("Token Expired",HttpStatus.FORBIDDEN);
+        }
+        return ResponseEntity.ok(userObj);
     }
 }

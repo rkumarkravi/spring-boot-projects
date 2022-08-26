@@ -1,5 +1,6 @@
 package com.rk.animestream.utils;
 
+import com.rk.animestream.exceptions.ExpiredJwtTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -27,36 +28,37 @@ public class JWTUtility implements Serializable {
     private String secretKey;
 
     //retrieve username from jwt token
-    public String getUsernameFromToken(String token) {
+    public String getUsernameFromToken(String token) throws ExpiredJwtTokenException {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
     //retrieve expiration date from jwt token
-    public Date getExpirationDateFromToken(String token) {
+    public Date getExpirationDateFromToken(String token) throws ExpiredJwtTokenException {
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
 
-    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
+    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) throws ExpiredJwtTokenException {
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
     }
 
 
     //for retrieving any information from token we will need the secret key
-    private Claims getAllClaimsFromToken(String token) {
+    private Claims getAllClaimsFromToken(String token) throws ExpiredJwtTokenException {
         Claims claims=null;
         try {
            claims= Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         }catch(ExpiredJwtException expiredJwtException){
             log.error("Token Expired :: {}",expiredJwtException.getLocalizedMessage());
+            throw new ExpiredJwtTokenException("Token Expired!!");
         }
         return claims;
     }
 
 
     //check if the token has expired
-    private Boolean isTokenExpired(String token) {
+    public Boolean isTokenExpired(String token) throws ExpiredJwtTokenException {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }
@@ -80,7 +82,7 @@ public class JWTUtility implements Serializable {
 
 
     //validate token
-    public Boolean validateToken(String token, UserDetails userDetails) {
+    public Boolean validateToken(String token, UserDetails userDetails) throws ExpiredJwtTokenException {
         final String username = getUsernameFromToken(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }

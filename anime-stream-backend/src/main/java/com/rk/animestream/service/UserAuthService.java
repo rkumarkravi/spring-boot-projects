@@ -2,6 +2,7 @@ package com.rk.animestream.service;
 
 import com.rk.animestream.daos.UserRepository;
 import com.rk.animestream.dtos.UserDto;
+import com.rk.animestream.exceptions.ExpiredJwtTokenException;
 import com.rk.animestream.mapper.UserMapper;
 import com.rk.animestream.models.User;
 import com.rk.animestream.utils.JWTUtility;
@@ -51,8 +52,14 @@ public class UserAuthService implements UserDetailsService {
         }
     }
 
-    public User checkUserActive(String token) {
+    public User checkUserActive(String token) throws ExpiredJwtTokenException {
+        if(this.jwtUtility.isTokenExpired(token)){
+            return null;
+        }
         String email = this.jwtUtility.getUsernameFromToken(token);
+        if(email==null){
+            return null;
+        }
         Optional<User> users = userRepo.findByEmailId(email);
         User user;
         if (users.isPresent()) {
@@ -110,7 +117,7 @@ public class UserAuthService implements UserDetailsService {
         }
     }
 
-    public UserDto getUserFromToken(HttpServletRequest httpServletRequest) {
+    public UserDto getUserFromToken(HttpServletRequest httpServletRequest) throws ExpiredJwtTokenException {
         String username = jwtUtility.getUsernameFromToken(httpServletRequest.getHeader("Authorization").split(" ")[1]);
         return this.getUserByEmailAndSetOtp(username);
 

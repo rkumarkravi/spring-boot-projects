@@ -1,8 +1,10 @@
 package com.rk.animestream.config;
 
 import com.rk.animestream.enums.ResponseStatus;
+import com.rk.animestream.exceptions.ExpiredJwtTokenException;
 import com.rk.animestream.pojos.ApiResponse;
 import com.sun.org.apache.xpath.internal.operations.String;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,14 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestController
 public class ExceptionHandlerConfig extends ResponseEntityExceptionHandler {
 
+    @ExceptionHandler(value = ExpiredJwtTokenException.class)
+    public ResponseEntity<Object> handleTokenExpiredException(ExpiredJwtTokenException ex, WebRequest request) {
+        ApiResponse<String> exceptionResponse=new ApiResponse<>();
+        exceptionResponse.setStatus(ResponseStatus.FAIL);
+        exceptionResponse.setMessage("Exception: "+ex.getMessage());
+        exceptionResponse.setPath(request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse,HttpStatus.FORBIDDEN);
+    }
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<Object> handleContentNotAllowedException(Exception ex, WebRequest request) {
         ApiResponse<String> exceptionResponse=new ApiResponse<>();
@@ -26,4 +36,5 @@ public class ExceptionHandlerConfig extends ResponseEntityExceptionHandler {
         exceptionResponse.setPath(request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse,HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }

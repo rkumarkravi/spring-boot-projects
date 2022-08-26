@@ -1,7 +1,9 @@
 package com.rk.animestream.filter;
 
+import com.rk.animestream.exceptions.ExpiredJwtTokenException;
 import com.rk.animestream.service.UserAuthService;
 import com.rk.animestream.utils.JWTUtility;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
+@Slf4j
 public class CustomFilterForAuthorization extends OncePerRequestFilter {
 
     @Autowired
@@ -30,28 +33,33 @@ public class CustomFilterForAuthorization extends OncePerRequestFilter {
         String authorization = httpServletRequest.getHeader("Authorization");
         String token = null;
         String userName = null;
+        try {
 
-        if (null != authorization && authorization.startsWith("Bearer ")) {
-            token = authorization.substring(7);
-            userName = jwtUtility.getUsernameFromToken(token);
-        }
 
-        if (null != userName && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails
-                    = userService.loadUserByUsername(userName);
-
-            if (jwtUtility.validateToken(token, userDetails)) {
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
-                        = new UsernamePasswordAuthenticationToken(userDetails,
-                        null, userDetails.getAuthorities());
-
-                usernamePasswordAuthenticationToken.setDetails(
-                        new WebAuthenticationDetailsSource().buildDetails(httpServletRequest)
-                );
-
-                SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+            if (null != authorization && authorization.startsWith("Bearer ")) {
+                token = authorization.substring(7);
+                userName = jwtUtility.getUsernameFromToken(token);
             }
 
+            if (null != userName && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails
+                        = userService.loadUserByUsername(userName);
+
+                if (jwtUtility.validateToken(token, userDetails)) {
+                    UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
+                            = new UsernamePasswordAuthenticationToken(userDetails,
+                            null, userDetails.getAuthorities());
+
+                    usernamePasswordAuthenticationToken.setDetails(
+                            new WebAuthenticationDetailsSource().buildDetails(httpServletRequest)
+                    );
+
+                    SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                }
+
+            }
+        } catch (ExpiredJwtTokenException expiredJwtTokenException) {
+            log.error("exception  is ::", expiredJwtTokenException.getLocalizedMessage());
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

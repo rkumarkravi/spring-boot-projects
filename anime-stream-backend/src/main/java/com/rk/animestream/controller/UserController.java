@@ -3,6 +3,7 @@ package com.rk.animestream.controller;
 import com.rk.animestream.dtos.AnimeDto;
 import com.rk.animestream.dtos.MyListDto;
 import com.rk.animestream.enums.ResponseStatus;
+import com.rk.animestream.exceptions.ExpiredJwtTokenException;
 import com.rk.animestream.pojos.ApiResponse;
 import com.rk.animestream.service.MyListService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ public class UserController {
    MyListService myListService;
 
     @PostMapping("/myList")
-    public ApiResponse getAnimeBySeason(@RequestHeader("Authorization") String token,HttpServletRequest httpRequest,@RequestBody Map<String,String> page){
+    public ApiResponse getAnimeBySeason(@RequestHeader("Authorization") String token,HttpServletRequest httpRequest,@RequestBody Map<String,String> page) throws ExpiredJwtTokenException {
 
         Integer pageNo=Integer.valueOf(page.get("page"));
         Integer pageSize=Integer.valueOf(page.get("size"));
@@ -41,7 +42,7 @@ public class UserController {
     }
 
     @PutMapping("/myList/add/{aid}")
-    public ApiResponse addToMyList(@PathVariable Long aid,@RequestHeader("Authorization") String token,HttpServletRequest httpRequest){
+    public ApiResponse addToMyList(@PathVariable Long aid,@RequestHeader("Authorization") String token,HttpServletRequest httpRequest) throws ExpiredJwtTokenException {
         ApiResponse<MyListDto> apiResponse=new ApiResponse<>();
         apiResponse.setData(myListService.addToMyList(token.substring(7),aid));
         apiResponse.setMessage("");
@@ -51,7 +52,7 @@ public class UserController {
     }
 
     @DeleteMapping("/myList/remove/{aid}")
-    public ResponseEntity<ApiResponse> removeFromMyList(@PathVariable Long aid, @RequestHeader("Authorization") String token, HttpServletRequest httpRequest){
+    public ResponseEntity<ApiResponse> removeFromMyList(@PathVariable Long aid, @RequestHeader("Authorization") String token, HttpServletRequest httpRequest) throws ExpiredJwtTokenException {
         ApiResponse<Integer> apiResponse=new ApiResponse<>();
         apiResponse.setData(myListService.removeFromMyList(token.substring(7),aid));
         apiResponse.setMessage("");

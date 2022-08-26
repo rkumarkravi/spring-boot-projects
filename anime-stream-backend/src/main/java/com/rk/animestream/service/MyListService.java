@@ -5,6 +5,7 @@ import com.rk.animestream.daos.MyListRepository;
 import com.rk.animestream.daos.UserRepository;
 import com.rk.animestream.dtos.AnimeDto;
 import com.rk.animestream.dtos.MyListDto;
+import com.rk.animestream.exceptions.ExpiredJwtTokenException;
 import com.rk.animestream.mapper.AnimeMapper;
 import com.rk.animestream.mapper.MyListMapper;
 import com.rk.animestream.models.Anime;
@@ -40,14 +41,14 @@ public class MyListService {
     @Autowired
     UserRepository userRepository;
 
-    public Page<AnimeDto> getMyList(String token, Pageable pageable) {
+    public Page<AnimeDto> getMyList(String token, Pageable pageable) throws ExpiredJwtTokenException {
         String email=jwtUtility.getUsernameFromToken(token);
         log.debug("user email: {}",email);
         Page<Anime> myList = myListRepository.findAllAnimeInMyList(email,pageable);
         return new PageImpl<AnimeDto>(myList.getContent().stream().map(x->animeMapper.animeToAnimeDto(x)).collect(Collectors.toList()));
     }
 
-    public MyListDto addToMyList(String token, Long aid) {
+    public MyListDto addToMyList(String token, Long aid) throws ExpiredJwtTokenException {
         String email=jwtUtility.getUsernameFromToken(token);
         log.debug("user email: {}",email);
         Optional<MyList> optionMyList = myListRepository.findByUser_EmailId(email);
@@ -67,7 +68,7 @@ public class MyListService {
         return myListMapper.myListToMyListDto(myListRepository.save(myList));
     }
 
-    public int removeFromMyList(String token, Long aid) {
+    public int removeFromMyList(String token, Long aid) throws ExpiredJwtTokenException {
         String email=jwtUtility.getUsernameFromToken(token);
         log.debug("removeFromMyList email: {}",email);
         Optional<Anime> anime = animeRepository.findById(aid);
