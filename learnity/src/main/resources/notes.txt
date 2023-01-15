@@ -1,3 +1,9 @@
 mongodb://localhost:27017
 
 https://dribbble.com/shots/11030757-Hedwig-Form-Modeling-for-Content-Management-System
+
+{
+"type":"PARAGRAPH",
+"value":"Since there is no primary key on the supplier table, you can not create a foreign key on the products table that references the supplier table.You can correct this error by adding a primary key to the supplier table as follows and then re-execute the CREATE TABLE statement for the products table",
+"order":1
+},

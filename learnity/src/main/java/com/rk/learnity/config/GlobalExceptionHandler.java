@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler
     private ResponseEntity<MasterResponseDto<Map<String, String>>> handleAnyExcetion(Exception ex) {
+        ex.printStackTrace();
         return ResponseUtility.setFailureResponse(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

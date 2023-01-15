@@ -1,5 +1,5 @@
 package com.rk.learnity.enums;
 
 public enum ContentTypeLearnity {
-    PARAGRAPH, IMAGE, LINK, CODE
+    PARAGRAPH, IMAGE_FILE,IMAGE_LINK, LINK, CODE
 }

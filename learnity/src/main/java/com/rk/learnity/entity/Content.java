@@ -23,6 +23,8 @@ public class Content {
     String value;
     @Column(name = "content_order")
     int order;
+    @Column(name = "content_style")
+    String style;
 
     @ManyToOne
     @JoinColumn(name = "topic_topic_id")

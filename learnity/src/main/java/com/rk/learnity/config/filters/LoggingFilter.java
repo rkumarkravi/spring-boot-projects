@@ -41,11 +41,14 @@ public class LoggingFilter implements Filter {
         chain.doFilter(requestCacheWrapperObject, responseCacheWrapperObject);
 
         Collection<String> hnRes = res.getHeaderNames();
-        hnRes.stream().forEach(hres -> log.info("response headers >> {}", res.getHeader(hres)));
-        byte[] responseArray = responseCacheWrapperObject.getContentAsByteArray();
-        String responseStr = new String(responseArray, responseCacheWrapperObject.getCharacterEncoding());
-        log.info("Response Body >> {}", gsonObj.toJson(responseStr));
-
+        hnRes.stream().forEach(hres -> log.info("response headers >> {}::{}", hres,res.getHeader(hres)));
+        if(res.getHeader("Content-Disposition")!=null) {
+            byte[] responseArray = responseCacheWrapperObject.getContentAsByteArray();
+            String responseStr = new String(responseArray, responseCacheWrapperObject.getCharacterEncoding());
+            log.info("Response Body >> {}", gsonObj.toJson(responseStr));
+        }else{
+            log.info("Response Body >> {}", "File as response;");
+        }
         responseCacheWrapperObject.copyBodyToResponse();
 
         log.info("Total time taken: {}", System.currentTimeMillis() - start);
