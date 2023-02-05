@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +29,10 @@ public class DownloadController {
 		if (musicBlob.isPresent()) {
 			return ResponseEntity.ok()
 					.header(HttpHeaders.CONTENT_DISPOSITION,
-							"attachment; filename=\"" + musicBlob.get().getId() + "\"")
+							"attachment; filename=\"" + musicBlob.get().getId()+musicBlob.get().getExtension() + "\"")
 					.body(musicBlob.get().getBlob());
 		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Song not present!!");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not present!!");
 		}
 	}
 

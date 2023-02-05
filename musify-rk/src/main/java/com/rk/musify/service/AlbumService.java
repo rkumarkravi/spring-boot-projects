@@ -16,7 +16,9 @@ public class AlbumService {
 	AlbumDao albumDao;
 
 	public Album createAlbum(Album album) {
-
+		if(album.getDescription()==null) {
+			album.setDescription(album.getAlbumName());
+		}
 		return albumDao.save(album);
 	}
 

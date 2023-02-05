@@ -115,7 +115,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"page\": 0,\r\n    \"size\": 1\r\n}",
+					"raw": "{\r\n    \"page\": 0,\r\n    \"size\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -331,8 +331,19 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"emailId\":\"rk2@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "rk@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "default"
+						}
+					],
 					"options": {
 						"raw": {
 							"language": "json"
@@ -340,7 +351,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/anime/auth/login",
+					"raw": "http://localhost:8080/anime/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -348,7 +359,6 @@
 					"port": "8080",
 					"path": [
 						"anime",
-						"auth",
 						"login"
 					]
 				}

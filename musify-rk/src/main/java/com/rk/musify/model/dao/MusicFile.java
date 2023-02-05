@@ -30,6 +30,7 @@ public class MusicFile{
 	String contentType;
 	String blobId;
 	Boolean published;
+	String duration;
 	@Temporal(TemporalType.TIMESTAMP)
 	Date createdDate=new Date();
 
@@ -39,6 +40,15 @@ public class MusicFile{
 		this.contentType=contentType;
 		this.blobId=blobId;
 		this.published=published;
+	}
+
+	public MusicFile(String musicName, String contentType, String blobId, Boolean published, String duration) {
+		super();
+		this.musicName = musicName;
+		this.contentType = contentType;
+		this.blobId = blobId;
+		this.published = published;
+		this.duration = duration;
 	}
 
 }

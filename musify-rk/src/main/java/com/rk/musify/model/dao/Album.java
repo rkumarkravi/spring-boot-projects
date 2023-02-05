@@ -14,7 +14,6 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -33,12 +32,14 @@ public class Album {
 	String albumId;
 	String albumName;
 	String creatorName;
+	String description;
 	@Temporal(TemporalType.TIMESTAMP)
 	Date createdDate=new Date();
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
 	@JoinColumn(name = "albumId")
 	Set<MusicFile> musicFiles;
 	String albumArt;
+	String dominantColour;
 
 	public Album(String albumName, String creatorName,String url) {
 		super();

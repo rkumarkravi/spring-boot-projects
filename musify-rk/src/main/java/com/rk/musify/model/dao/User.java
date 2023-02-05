@@ -27,12 +27,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(name = "email",columnNames = "email"))
+@Table(name = "user_table",uniqueConstraints = @UniqueConstraint(name = "email",columnNames = "email"))
 @JsonIgnoreProperties(value = {"pass","otp","albums"},allowSetters = true)
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Integer uid;
+	Integer userId;
 	String uname;
 	String pass;
 	String email;
@@ -42,11 +42,11 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	Date createdDate=new Date();
 	@OneToMany(orphanRemoval = true,cascade = CascadeType.ALL)
-	@JoinColumn(name = "uid")
+	@JoinColumn(name = "userId")
 	Set<Playlist> playlists=new HashSet<>();
 
 	@OneToMany(orphanRemoval = true)
-	@JoinColumn(name = "uid")
+	@JoinColumn(name = "userId")
 	Set<Album> albums;
 
 	public User(String uname, String pass, String mobile) {

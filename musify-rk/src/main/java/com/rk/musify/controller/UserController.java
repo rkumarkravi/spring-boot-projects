@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +41,7 @@ public class UserController {
 	@GetMapping("/createQR")
 	public ResponseEntity<String> generateQr(@RequestParam("text") String qrtext) throws WriterException, IOException{
 		String qrcode = Base64.getEncoder().encodeToString(Util.getQRCodeImage(qrtext, 100, 100));
-		return new ResponseEntity(qrcode,HttpStatus.OK);
+		return new ResponseEntity<String>(qrcode,HttpStatus.OK);
 	}
 
 }

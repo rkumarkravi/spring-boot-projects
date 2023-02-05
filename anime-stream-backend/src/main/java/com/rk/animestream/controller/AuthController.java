@@ -67,7 +67,7 @@ public class AuthController {
 //    }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserDto user) throws Exception {
+    public ResponseEntity<?> register(@RequestBody() UserDto user) throws Exception {
         Map<String, String> jsonObject = new HashMap<>();
         jsonObject.put("username", userService.createUser(user).getEmailId());
         jsonObject.put("status", "SUCCESS");
