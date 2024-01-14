@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "62e9af65-d0dc-4882-9108-3ba720594c45",
+		"name": "instaclone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8877828"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"john_doe\",\r\n  \"password\": \"securePassword123\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"age\": 25,\r\n  \"gender\": \"male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/instaclone/auth/signup",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"instaclone",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"john_doe\",\r\n    \"password\":\"securePassword123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/instaclone/auth/signin",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"instaclone",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/instaclone/api/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"instaclone",
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test controller",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authToken}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<MyRequest>\r\n    <misc><![CDATA[[{\"hey\":\"hello world<hey></hey>\"}]]]></misc>\r\n</MyRequest>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/instaclone/api/media/test",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"instaclone",
+						"api",
+						"media",
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "Bearer {{token}}",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJ1aWQiOjMsInN1YiI6ImpvaG5fZG9lIiwiZXhwIjoxNzAyMjAzMzgzLCJpYXQiOjE3MDIxOTk3ODN9.P8vDKdN6oN3mz_tzNpivlzblDMic1fJZcvqatgAYLakl-V8nf49LgTDbb1hRJjxqJZTVrafOld5iMmDH2KQ3Nw",
+			"type": "string"
+		}
+	]
+}

@@ -52,16 +52,24 @@ public class CustomFilterForAuthorization extends OncePerRequestFilter {
             if (null != authorization && authorization.startsWith("Bearer ")) {
                 token = authorization.substring(7);
                 userName = jwtUtility.getUsernameFromToken(token);
+            }else{
+                throw new Exception("Invalid Token");
             }
 
             if (null != userName && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails
                         = userService.loadUserByUsername(userName);
 
+
+                if(!jwtUtility.isAuthToken(token)){
+                    throw new Exception("Invalid Auth Token");
+                }
+
                 Optional<IJwtToken> tokenPresent = iJwtTokenRepository.findByDeviceModeAndAuthTokenAndUser_Username(mode, token, userName);
                 if (!tokenPresent.isPresent()) {
                     throw new Exception("Invalid Token");
                 }
+
                 if (jwtUtility.validateToken(token, userDetails)) {
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
                             = new UsernamePasswordAuthenticationToken(userDetails,

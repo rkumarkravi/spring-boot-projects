@@ -70,6 +70,11 @@ public class JWTUtility implements Serializable {
         return expiration.before(new Date());
     }
 
+    public Boolean isAuthToken(String token) {
+        final String type = (String) getDataFromTokenByKey(token,"type");
+        return type != null && type.equals("auth");
+    }
+
     //generate token for user
     public Map<String,String> generateToken(String username, Map<String, Object> otherDetails) {
 
