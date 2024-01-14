@@ -48,7 +48,7 @@ public class AuthController {
     }
     @PostMapping("/signup")
     public ResponseEntity<IUser> createUser(@RequestBody IUser user) {
-        Set<String> set=new HashSet();
+        Set<String> set=new HashSet<>();
         set.add("ROLE_USER");
         IUser createdUser = userService.createUser(user,set);
         return ResponseEntity.ok(createdUser);

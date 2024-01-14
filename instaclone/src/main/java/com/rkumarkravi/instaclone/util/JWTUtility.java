@@ -18,7 +18,8 @@ import java.util.function.Function;
 @Slf4j
 public class JWTUtility implements Serializable {
 
-    public static final long JWT_TOKEN_VALIDITY = 60 * 60;
+    public static final long JWT_AUTH_TOKEN_VALIDITY = 1 * 60 * 60;
+    public static final long JWT_REFRESH_TOKEN_VALIDITY = 24 * 60 * 60;
     private static final long serialVersionUID = 234234523523L;
     @Value("${jwt.secret}")
     private String secretKey;
@@ -75,7 +76,9 @@ public class JWTUtility implements Serializable {
         Map<String, Object> claims = new HashMap<>(otherDetails);
 
         Map<String,String> data=new HashMap<>();
+        claims.put("type","auth");
         data.put("authToken",doGenerateToken(claims,username));
+        claims.put("type","refresh");
         data.put("refreshToken",doGenerateRefreshToken(claims,username));
 
         return data;
@@ -87,13 +90,13 @@ public class JWTUtility implements Serializable {
     private String doGenerateToken(Map<String, Object> claims, String subject) {
         log.info("secret key: {}",secretKey);
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_AUTH_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, secretKey).compact();
     }
 
     private String doGenerateRefreshToken(Map<String, Object> claims, String subject) {
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_REFRESH_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, secretKey).compact();
     }
 
