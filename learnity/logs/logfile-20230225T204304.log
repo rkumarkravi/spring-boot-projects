@@ -1,0 +1,4 @@
+#logback.classic pattern: %d{dd-MM-yy HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{sourceThread} %X{requestId}- %msg%n
+#logback.classic pattern: %d{dd-MM-yy HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{sourceThread} %X{requestId}- %msg%n
+25-02-23 20:43:04.593 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - Starting LearnityApplication using Java 1.8.0_202 on LAPTOP-42JM3V08 with PID 16748 (D:\Spring-boot-projects\learnity\target\classes started by errku in D:\Spring-boot-projects\learnity)
+25-02-23 20:43:04.595 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - The following 1 profile is active: "prod"

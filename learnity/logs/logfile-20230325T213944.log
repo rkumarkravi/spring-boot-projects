@@ -1,0 +1,25 @@
+#logback.classic pattern: %d{dd-MM-yy HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{sourceThread} %X{requestId}- %msg%n
+25-03-23 21:39:45.092 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - Starting LearnityApplication using Java 1.8.0_202 on LAPTOP-42JM3V08 with PID 20372 (D:\Spring-boot-projects\learnity\target\classes started by errku in D:\Spring-boot-projects\learnity)
+25-03-23 21:39:45.099 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - The following 1 profile is active: "prod"
+25-03-23 21:40:01.840 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - Started LearnityApplication in 18.046 seconds (JVM running for 23.988)
+25-03-23 21:49:54.677 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- Request Method << GET
+25-03-23 21:49:54.681 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << localhost:8080
+25-03-23 21:49:54.681 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << keep-alive
+25-03-23 21:49:54.681 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << "Microsoft Edge";v="111", "Not(A:Brand";v="8", "Chromium";v="111"
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << ?0
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.51
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << "Windows"
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << */*
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << http://localhost:3000
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << same-site
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << cors
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << empty
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << http://localhost:3000/
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << gzip, deflate, br
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- request headers << en-US,en;q=0.9
+25-03-23 21:49:54.682 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- Request Body << 
+25-03-23 21:49:54.710 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- response headers >> Vary::Origin
+25-03-23 21:49:54.710 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- response headers >> Vary::Origin
+25-03-23 21:49:54.710 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- response headers >> Vary::Origin
+25-03-23 21:49:54.710 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- Response Body >> File as response;
+25-03-23 21:49:54.713 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  68a8d438-890e-4ee3-8a65-7141dd984e8f- Total time taken: 37

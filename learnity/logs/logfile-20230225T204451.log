@@ -1,0 +1,68 @@
+#logback.classic pattern: %d{dd-MM-yy HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{sourceThread} %X{requestId}- %msg%n
+#logback.classic pattern: %d{dd-MM-yy HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{sourceThread} %X{requestId}- %msg%n
+25-02-23 20:44:51.476 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - Starting LearnityApplication using Java 1.8.0_202 on LAPTOP-42JM3V08 with PID 23996 (D:\Spring-boot-projects\learnity\target\classes started by errku in D:\Spring-boot-projects\learnity)
+25-02-23 20:44:51.478 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - The following 1 profile is active: "prod"
+25-02-23 20:45:01.319 [restartedMain] INFO  com.rk.learnity.LearnityApplication  - Started LearnityApplication in 10.104 seconds (JVM running for 11.053)
+25-02-23 20:45:06.559 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- Request Method << GET
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << localhost:8080
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << keep-alive
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << "Chromium";v="110", "Not A(Brand";v="24", "Microsoft Edge";v="110"
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << ?0
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.50
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << "Windows"
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << */*
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << http://localhost:3000
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << same-site
+25-02-23 20:45:06.560 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << cors
+25-02-23 20:45:06.561 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << empty
+25-02-23 20:45:06.561 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << http://localhost:3000/
+25-02-23 20:45:06.561 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << gzip, deflate, br
+25-02-23 20:45:06.561 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- request headers << en-US,en;q=0.9
+25-02-23 20:45:06.561 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- Request Body << 
+25-02-23 20:45:06.594 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- response headers >> Vary::Origin
+25-02-23 20:45:06.594 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- response headers >> Vary::Origin
+25-02-23 20:45:06.594 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- response headers >> Vary::Origin
+25-02-23 20:45:06.594 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- Response Body >> File as response;
+25-02-23 20:45:06.596 [http-nio-8080-exec-1] INFO  c.r.l.config.filters.LoggingFilter  d80d2145-0c3d-4341-b86d-db44c84c2229- Total time taken: 38
+25-02-23 20:45:06.598 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- Request Method << GET
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << localhost:8080
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << keep-alive
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << "Chromium";v="110", "Not A(Brand";v="24", "Microsoft Edge";v="110"
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << ?0
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.50
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << "Windows"
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << */*
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << http://localhost:3000
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << same-site
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << cors
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << empty
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << http://localhost:3000/
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << gzip, deflate, br
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- request headers << en-US,en;q=0.9
+25-02-23 20:45:06.599 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- Request Body << 
+25-02-23 20:45:06.600 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- response headers >> Vary::Origin
+25-02-23 20:45:06.600 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- response headers >> Vary::Origin
+25-02-23 20:45:06.600 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- response headers >> Vary::Origin
+25-02-23 20:45:06.600 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- Response Body >> File as response;
+25-02-23 20:45:06.601 [http-nio-8080-exec-2] INFO  c.r.l.config.filters.LoggingFilter  e78502c2-36c0-482c-be3b-753cbef35db7- Total time taken: 3
+25-02-23 20:45:23.407 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- Request Method << GET
+25-02-23 20:45:23.407 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << localhost:8080
+25-02-23 20:45:23.407 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << keep-alive
+25-02-23 20:45:23.407 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << "Chromium";v="110", "Not A(Brand";v="24", "Microsoft Edge";v="110"
+25-02-23 20:45:23.407 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << ?0
+25-02-23 20:45:23.407 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.50
+25-02-23 20:45:23.407 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << "Windows"
+25-02-23 20:45:23.408 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << */*
+25-02-23 20:45:23.408 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << http://localhost:3000
+25-02-23 20:45:23.408 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << same-site
+25-02-23 20:45:23.408 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << cors
+25-02-23 20:45:23.408 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << empty
+25-02-23 20:45:23.409 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << http://localhost:3000/
+25-02-23 20:45:23.409 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << gzip, deflate, br
+25-02-23 20:45:23.409 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- request headers << en-US,en;q=0.9
+25-02-23 20:45:23.409 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- Request Body << 
+25-02-23 20:45:23.410 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- response headers >> Vary::Origin
+25-02-23 20:45:23.410 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- response headers >> Vary::Origin
+25-02-23 20:45:23.410 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- response headers >> Vary::Origin
+25-02-23 20:45:23.410 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- Response Body >> File as response;
+25-02-23 20:45:23.411 [http-nio-8080-exec-4] INFO  c.r.l.config.filters.LoggingFilter  b82a9636-6db5-42b3-8a9d-c0c67a83a995- Total time taken: 5

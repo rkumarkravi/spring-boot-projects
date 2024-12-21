@@ -1,0 +1,35 @@
+String[] names = new String[] { "Ravi" };
+String[] rideDates = new String[] { "11/01/2022", "11/02/2022", "11/03/2022", "11/04/2022","11/07/2022","11/16/2022"};
+String[] startTimes = new String[] { "09:31 AM", "06:35 PM", "06:21 PM", "06:23 PM","09:35 PM","06:47 PM"};
+String[] endTimes = new String[] { "09:46 AM", "06:46 PM", "06:38 PM", "06:40 PM" ,"09:54 PM","06:58 PM"};
+String[] driverNames = new String[] { "Rujesh", "Yogesh", "Gurvinder", "Simaranjit","Navneet","Deepak"};
+String[] amount = new String[] { "112.53", "130.56", "110.52", "103.52","118.57","116.52"};
+
+
+
+String[] names = new String[] { "Nitish" };
+String[] rideDates = new String[] { "11/21/2022", "11/22/2022", "11/23/2022", "11/24/2022","11/25/2022","11/28/2022","11/29/2022","11/25/2022"};
+String[] startTimes = new String[] { "09:31 AM", "09:35 AM", "06:21 PM", "09:23 AM","06:35 PM","09:47 AM","06:45 PM","09:39 AM","06:45 PM"};
+String[] endTimes = new String[] { "09:46 AM", "09:46 AM", "06:38 PM", "09:38 AM" ,"06:54 PM","09:58 AM","06:55 PM","09:57 AM","06:55 PM"};
+String[] driverNames = new String[] { "Rajesh", "Nilesh", "Gaurav", "Sujeet","Sanjeev","Tarun", "Ranjeet","Rajeev","Yuvraj"};
+String[] amount = new String[] { "132.55", "130.56", "130.1", "75.45","98.57","96.52", "85.45","118.57","126.52"};
+
+
+String[] names = new String[] { "Kishan" };
+String[] rideDates = new String[] { "11/01/2022", "11/02/2022", "11/04/2022", "11/03/2022","11/11/2022","11/14/2022", "11/15/2022","11/04/2022","11/09/2022","11/10/2022","11/09/2022"};
+String[] startTimes = new String[] { "06:31 PM", "09:35 AM", "09:21 AM", "09:23 AM","09:35 AM","09:47 AM", "06:35 PM", "06:21 PM", "06:23 PM","06:35 PM","09:27 AM"};
+String[] endTimes = new String[] { "06:46 PM", "09:46 AM", "09:38 AM", "09:40 AM" ,"09:54 AM","09:58 AM", "06:45 PM", "06:45 PM", "06:46 PM","06:55 PM","09:56 AM"};
+String[] driverNames = new String[] { "Yashpal", "Gurvinder", "Suresh","Navneet","Deepak","Rujesh", "Ravinder", "Sujeet", "Simaranjit","Naman","Davinder"};
+String[] amount = new String[] { "102.25", "127.45", "144.52", "90.57","104.25","106.57", "103.36", "110.40", "109.54","121.20","102.12"};
+
+01/11/2022 (E)	102.25
+02/11/2022 (M)	127
+04/11/2022 (M)	144
+03/11/2022 (M)	90.57
+11/11/2022 (M)	104.25
+14/11/2022 (M)	106.57
+15/11/2022 (E)	102.36
+04/11/2022 (E)	110.4
+09/11/2022 (E)	109.54
+10/11/2022 (E)	121.2
+09/11/2022 (M)	102.1

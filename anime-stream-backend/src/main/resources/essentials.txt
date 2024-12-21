@@ -8,3 +8,15 @@ ivar
 oracle
 
 flutter run -d chrome --web-hostname localhost --web-port 5050
+
+
+json-server --watch db.json --port 3001
+
+
+to print multiple logs with new logs:
+--------------------------------
+tail -f mylog1.log mylog2.log
+
+https://www.yoondigital.com/dashboard
+rkumark.ravi@gmail.com
+x+UKUy9K@}`ytvHt

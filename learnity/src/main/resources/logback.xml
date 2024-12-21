@@ -27,13 +27,12 @@
             <pattern>${LOG_PATTERN}</pattern>
         </encoder>
     </appender>
-    <appender name="Async-Appender" class="ch.qos.logback.classic.AsyncAppender">
+   <!--  <appender name="Async-Appender" class="ch.qos.logback.classic.AsyncAppender">
         <appender-ref ref="RollingFile-Appender" />
     </appender>
-
+ -->
     <logger name="com.rk.learnity" level="info" additivity="false">
         <appender-ref ref="Console-Appender" />
         <appender-ref ref="File-Appender" />
-        <appender-ref ref="Async-Appender" />
     </logger>
 </configuration>
